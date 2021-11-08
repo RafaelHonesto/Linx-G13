@@ -22,16 +22,21 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// Atualiza despesa
         /// </summary>
         /// <param name="despesa">despesa a ser atualizada</param>
-        /// <param name="idSetor">id do setor no JWT</param>
         /// <returns>confirmacao de atualizacao</returns>
-        public bool Update(Despesa despesa, int idSetor);
+        public bool Update(Despesa despesa);
 
         /// <summary>
         /// Deleta despesa
         /// </summary>
         /// <param name="idDespesa">id da empresa a ser deletada</param>
-        /// <param name="idSetor">id do setor no JWT</param>
         /// <returns>conirmacao de exclusao</returns>
-        public bool Delete(int idDespesa, int idSetor);
+        public bool Delete(int idDespesa);
+
+        /// <summary>
+        /// Busca despesa pelo id
+        /// </summary>
+        /// <param name="idDespesa">id da despesa a ser listada</param>
+        /// <returns>despesa buscada</returns>
+        public Despesa SearchById(int idDespesa);
     }
 }

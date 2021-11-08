@@ -27,18 +27,12 @@ namespace BackEnd_GestaoFinanceira.Repositories
         /// Deleta despesa
         /// </summary>
         /// <param name="idDespesa">id da despesa a ser deletada</param>
-        /// <param name="idSetor">id do setor no JWT</param>
         /// <returns>confirmacao de exclusao</returns>
-        public bool Delete(int idDespesa, int idSetor)
+        public bool Delete(int idDespesa)
         {
             Despesa despesa = _ctx.Despesas.Find(idDespesa);
 
             if (despesa == null)
-            {
-                return false;
-            }
-
-            if (despesa.IdSetor == idSetor)
             {
                 return false;
             }
@@ -60,22 +54,21 @@ namespace BackEnd_GestaoFinanceira.Repositories
             return _ctx.Despesas.Where(x => x.IdSetor == idSetor).ToList();
         }
 
+        public Despesa SearchById(int idDespesa)
+        {
+            return _ctx.Despesas.Find(idDespesa);
+        }
+
         /// <summary>
         /// Atualiza despesa
         /// </summary>
         /// <param name="despesa">despesa do setor a ser atualizada</param>
-        /// <param name="idSetor">id do setor no JWT</param>
         /// <returns>confirmacao de atualizacao</returns>
-        public bool Update(Despesa despesa, int idSetor)
+        public bool Update(Despesa despesa)
         {
             Despesa despesaAntiga = _ctx.Despesas.Find(despesa.IdDespesa);
 
             if (despesaAntiga == null)
-            {
-                return false;
-            }
-
-            if (despesaAntiga.IdSetor != idSetor)
             {
                 return false;
             }
