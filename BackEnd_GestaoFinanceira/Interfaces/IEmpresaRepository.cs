@@ -25,15 +25,13 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// </summary>
         /// <param name="empresa">empresa a ser atualizada</param>
         /// <param name="idSetor">id do setor da empresa a ser atualizada</param>
-        /// <returns>confirmacao de atualizacao</returns>
-        public bool Update(Empresa empresa);
+        public void Update(Empresa empresa);
 
         /// <summary>
         /// Deleta empresa
         /// </summary>
         /// <param name="idEmpresa">id da empresa a ser deletada</param>
-        /// <returns>confirmacao de exclusao</returns>
-        public bool Delete(int idEmpresa);
+        public void Delete(int idEmpresa);
 
         /// <summary>
         /// Lista empresas de setor

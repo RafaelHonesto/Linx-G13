@@ -27,27 +27,14 @@ namespace BackEnd_GestaoFinanceira.Repositories
         /// Deleta empresa
         /// </summary>
         /// <param name="idEmpresa">id da empresa a ser deletada</param>
-        /// <param name="idSetor">id do setor no JWT</param>
         /// <returns>confirmacao de exclusao</returns>
-        public bool Delete(int idEmpresa, int idSetor)
+        public void Delete(int idEmpresa)
         {
             Empresa empresa = _ctx.Empresas.Find(idEmpresa);
-
-            if (empresa == null)
-            {
-                return false;
-            }
-
-            if (empresa.IdSetor != idSetor)
-            {
-                return false;
-            }
 
             _ctx.Empresas.Remove(empresa);
 
             _ctx.SaveChanges();
-
-            return true;
         }
 
         /// <summary>
@@ -69,6 +56,11 @@ namespace BackEnd_GestaoFinanceira.Repositories
             return _ctx.Empresas.Where(x => x.IdSetor == idSetor).ToList();
         }
 
+        /// <summary>
+        /// Busca empresa pelo id
+        /// </summary>
+        /// <param name="idEmpresa">id da empresa a ser buscada</param>
+        /// <returns>Empresa se encontrada</returns>
         public Empresa SearchById(int? idEmpresa)
         {
             return _ctx.Empresas.Find(idEmpresa);
@@ -79,16 +71,10 @@ namespace BackEnd_GestaoFinanceira.Repositories
         /// verifique se o id do setor no JWT 
         /// </summary>
         /// <param name="empresa">empresa a ser atualizada</param>
-        /// <param name="idSetor">id do setor no JWT</param>
         /// <returns>confirmacao de atualizacao</returns>
-        public bool Update(Empresa empresa, int idSetor)
+        public void Update(Empresa empresa)
         {
             Empresa empresaAntiga = _ctx.Empresas.Find(empresa.IdEmpresa);
-
-            if (empresaAntiga.IdSetor == idSetor)
-            {
-                return false;
-            }
 
             if (empresa.NomeEmpresa != null)
             {
@@ -102,13 +88,6 @@ namespace BackEnd_GestaoFinanceira.Repositories
             _ctx.Empresas.Update(empresa);
 
             _ctx.SaveChanges();
-
-            return true;
-        }
-
-        public bool Update(Empresa empresa)
-        {
-            throw new NotImplementedException();
         }
     }
 }

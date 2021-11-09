@@ -12,6 +12,8 @@ namespace BackEnd_GestaoFinanceira.Domains
             Despesas = new HashSet<Despesa>();
             Empresas = new HashSet<Empresa>();
             Funcionarios = new HashSet<Funcionario>();
+            TipoDespesas = new HashSet<TipoDespesa>();
+            Valores = new HashSet<Valore>();
         }
 
         public int IdSetor { get; set; }
@@ -20,5 +22,7 @@ namespace BackEnd_GestaoFinanceira.Domains
         public virtual ICollection<Despesa> Despesas { get; set; }
         public virtual ICollection<Empresa> Empresas { get; set; }
         public virtual ICollection<Funcionario> Funcionarios { get; set; }
+        public virtual ICollection<TipoDespesa> TipoDespesas { get; set; }
+        public virtual ICollection<Valore> Valores { get; set; }
     }
 }

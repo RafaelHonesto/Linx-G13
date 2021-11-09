@@ -1,5 +1,6 @@
 ﻿using BackEnd_GestaoFinanceira.Domains;
 using BackEnd_GestaoFinanceira.Interfaces;
+using BackEnd_GestaoFinanceira.Model;
 using BackEnd_GestaoFinanceira.Repositories;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -64,11 +65,15 @@ namespace BackEnd_GestaoFinanceira.Controllers
         }
 
         //Metodos do administrador
-        [HttpPost]
-        public IActionResult CriarUsuario(Usuario usuario, Funcionario funcionario)
+        [HttpPost("Criar")]
+        public IActionResult CriarUsuario(UsuarioFuncionario usuarioFuncionario)
         {
             try
             {
+                Usuario usuario = usuarioFuncionario.usuario;
+
+                Funcionario funcionario = usuarioFuncionario.funcionario;
+
                 Usuario usuarioCadastrado = _usuarioRepository.Create(usuario);
 
                 funcionario.IdUsuario = usuario.IdUsuario;
@@ -84,10 +89,14 @@ namespace BackEnd_GestaoFinanceira.Controllers
         }
 
         [HttpPut]
-        public IActionResult EditarUsuario(Usuario usuario, Funcionario funcionario)
+        public IActionResult EditarUsuario(UsuarioFuncionario usuarioFuncionario)
         {
             try
             {
+                Usuario usuario = usuarioFuncionario.usuario;
+
+                Funcionario funcionario = usuarioFuncionario.funcionario;
+
                 if (_usuarioRepository.FindByUserId(usuario.IdUsuario) == null)
                 {
                     return StatusCode(404, "Usuario nao encontrado");
@@ -134,8 +143,11 @@ namespace BackEnd_GestaoFinanceira.Controllers
 
         //Metodos do Gestor
         [HttpPost("Gestor")]
-        public IActionResult CadastrarUsuarioNoSetor(Usuario usuario, Funcionario funcionario)
+        public IActionResult CadastrarUsuarioNoSetor(UsuarioFuncionario usuarioFuncionario)
         {
+            Usuario usuario = usuarioFuncionario.usuario;
+
+            Funcionario funcionario = usuarioFuncionario.funcionario;
             Usuario usuarioCadastrado = _usuarioRepository.Create(usuario);
 
             funcionario.IdUsuario = usuarioCadastrado.IdUsuario;
@@ -147,10 +159,14 @@ namespace BackEnd_GestaoFinanceira.Controllers
         }
 
         [HttpPut("Gestor")]
-        public IActionResult EditarUsuarioNoSetor(Usuario usuario, Funcionario funcionario)
+        public IActionResult EditarUsuarioNoSetor(UsuarioFuncionario usuarioFuncionario)
         {
             try
             {
+                Usuario usuario = usuarioFuncionario.usuario;
+
+                Funcionario funcionario = usuarioFuncionario.funcionario;
+
                 if (_usuarioRepository.FindByUserId(usuario.IdUsuario) == null)
                 {
                     return StatusCode(404, "Usuario nao encontrado");

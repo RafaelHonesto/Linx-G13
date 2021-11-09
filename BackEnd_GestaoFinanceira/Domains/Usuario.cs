@@ -10,7 +10,6 @@ namespace BackEnd_GestaoFinanceira.Domains
         public int IdUsuario { get; set; }
         public string Acesso { get; set; }
         public string SenhaDeAcesso { get; set; }
-        public string Foto { get; set; }
         public int? IdTipoUsuario { get; set; }
 
         public virtual TipoUsuario IdTipoUsuarioNavigation { get; set; }

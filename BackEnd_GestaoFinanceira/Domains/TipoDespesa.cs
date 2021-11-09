@@ -13,8 +13,10 @@ namespace BackEnd_GestaoFinanceira.Domains
         }
 
         public int IdTipoDespesa { get; set; }
+        public int? IdSetor { get; set; }
         public string Titulo { get; set; }
 
+        public virtual Setor IdSetorNavigation { get; set; }
         public virtual ICollection<Despesa> Despesas { get; set; }
     }
 }

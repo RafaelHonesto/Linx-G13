@@ -31,5 +31,12 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// </summary>
         /// <param name="id">id do valor a ser deletado</param>
         public void Delete(int id);
+
+        /// <summary>
+        /// Lista valores pelo id
+        /// </summary>
+        /// <param name="idSetor">id do setor</param>
+        /// <returns>Lista de valores</returns>
+        public List<Valore> ReadBySetorId(int? idSetor);
     }
 }

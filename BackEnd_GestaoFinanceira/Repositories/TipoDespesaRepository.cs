@@ -1,6 +1,7 @@
 ﻿using BackEnd_GestaoFinanceira.Contexts;
 using BackEnd_GestaoFinanceira.Domains;
 using BackEnd_GestaoFinanceira.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;

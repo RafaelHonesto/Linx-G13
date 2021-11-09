@@ -32,6 +32,11 @@ namespace BackEnd_GestaoFinanceira.Repositories
             return _ctx.Valores.ToList();
         }
 
+        public List<Valore> ReadBySetorId(int? idSetor)
+        {
+            return _ctx.Valores.Where(x => x.IdSetor == idSetor).ToList();
+        }
+
         public void Update(Valore valor)
         {
             Valore valorAntigo = _ctx.Valores.Find(valor.IdValor);
@@ -48,9 +53,9 @@ namespace BackEnd_GestaoFinanceira.Repositories
             {
                 valorAntigo.Descricao = valor.Descricao;
             }
-            if (valor.Perda != null)
+            if (valor.TipoEntrada != null)
             {
-                valorAntigo.Perda = valor.Perda;
+                valorAntigo.TipoEntrada = valor.TipoEntrada;
             }
             if (valor.Valor != null)
             {
