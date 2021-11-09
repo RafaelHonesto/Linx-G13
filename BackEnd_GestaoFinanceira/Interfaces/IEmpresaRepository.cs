@@ -32,9 +32,8 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// Deleta empresa
         /// </summary>
         /// <param name="idEmpresa">id da empresa a ser deletada</param>
-        /// <param name="idSetor">id do setor no JWT</param>
         /// <returns>confirmacao de exclusao</returns>
-        public bool Delete(int idEmpresa, int idSetor);
+        public bool Delete(int idEmpresa);
 
         /// <summary>
         /// Lista empresas de setor
@@ -42,5 +41,12 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// <param name="idSetor">id do setor</param>
         /// <returns>lista de empresas</returns>
         public List<Empresa> ReadBySetorId(int? idSetor);
+
+        /// <summary>
+        /// Busca empresa pelo id
+        /// </summary>
+        /// <param name="idEmpresa">id da empresa a ser usada</param>
+        /// <returns>Empresa buscada se encontrada</returns>
+        public Empresa SearchById(int? idEmpresa);
     }
 }

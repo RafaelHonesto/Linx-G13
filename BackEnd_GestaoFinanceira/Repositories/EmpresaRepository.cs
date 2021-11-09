@@ -69,6 +69,11 @@ namespace BackEnd_GestaoFinanceira.Repositories
             return _ctx.Empresas.Where(x => x.IdSetor == idSetor).ToList();
         }
 
+        public Empresa SearchById(int? idEmpresa)
+        {
+            return _ctx.Empresas.Find(idEmpresa);
+        }
+
         /// <summary>
         /// Atualiza empresa
         /// verifique se o id do setor no JWT 
@@ -99,6 +104,11 @@ namespace BackEnd_GestaoFinanceira.Repositories
             _ctx.SaveChanges();
 
             return true;
+        }
+
+        public bool Update(Empresa empresa)
+        {
+            throw new NotImplementedException();
         }
     }
 }

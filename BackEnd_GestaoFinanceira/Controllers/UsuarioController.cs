@@ -136,13 +136,6 @@ namespace BackEnd_GestaoFinanceira.Controllers
         [HttpPost("Gestor")]
         public IActionResult CadastrarUsuarioNoSetor(Usuario usuario, Funcionario funcionario)
         {
-            Usuario usuarioLogado = _usuarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
-
-            if (_funcionarioRepository.FindByUserId(usuarioLogado.Funcionario.Gestor) == null)
-            {
-                return StatusCode(401, "Usuario nao e gestor");
-            }
-
             Usuario usuarioCadastrado = _usuarioRepository.Create(usuario);
 
             funcionario.IdUsuario = usuarioCadastrado.IdUsuario;
@@ -158,13 +151,6 @@ namespace BackEnd_GestaoFinanceira.Controllers
         {
             try
             {
-                Usuario usuarioLogado = _usuarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
-
-                if (_funcionarioRepository.FindByUserId(usuarioLogado.Funcionario.Gestor) == false)
-                {
-                    return StatusCode(401, "Usuario nao e gestor");
-                }
-
                 if (_usuarioRepository.FindByUserId(usuario.IdUsuario) == null)
                 {
                     return StatusCode(404, "Usuario nao encontrado");
@@ -189,13 +175,6 @@ namespace BackEnd_GestaoFinanceira.Controllers
         [HttpDelete("Gestor")]
         public IActionResult DeletarUsuarioNoSetor(int idUsuario)
         {
-            Usuario usuarioLogado = _usuarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
-
-            if (_funcionarioRepository.FindByUserId(usuarioLogado.Funcionario.Gestor) == false)
-            {
-                return StatusCode(401, "Usuario nao e gestor");
-            }
-
             if (_usuarioRepository.FindByUserId(idUsuario) == null)
             {
                 return StatusCode(404, "Usuario nao encontrado");
