@@ -272,3 +272,13 @@ C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\ref\BackEnd_GestaoFinanceira.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.pdb
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.csproj.AssemblyReference.cache
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.AssemblyInfoInputs.cache
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.AssemblyInfo.cs
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.csproj.CoreCompileInputs.cache
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.dll
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\ref\BackEnd_GestaoFinanceira.dll
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.pdb

@@ -54,9 +54,19 @@ namespace BackEnd_GestaoFinanceira.Repositories
         /// Lista empresas pelo id do setor no JWT
         /// </summary>
         /// <returns>lista de empresas</returns>
-        public List<Empresa> Read(int idSetor)
+        public List<Empresa> Read()
         {
-            return _ctx.Empresas.Where(x => x.IdSetor == idSetor).ToList();;
+            return _ctx.Empresas.ToList();;
+        }
+
+        /// <summary>
+        /// Lista empresas pelo id do setor
+        /// </summary>
+        /// <param name="idSetor">id do setor</param>
+        /// <returns>Lista de empresas</returns>
+        public List<Empresa> ReadBySetorId(int? idSetor)
+        {
+            return _ctx.Empresas.Where(x => x.IdSetor == idSetor).ToList();
         }
 
         /// <summary>

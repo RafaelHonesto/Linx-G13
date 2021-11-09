@@ -15,5 +15,9 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         public void Update(TipoDespesa tipoDespesa);
 
         public void Delete(int id);
+
+        public List<TipoDespesa> ReadBySetorId(int? idSetor);
+
+        public TipoDespesa SearchById(int? idTipoDespesa);
     }
 }

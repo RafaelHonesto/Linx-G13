@@ -20,11 +20,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
         private IDespesaRepository _despesaRepository { get; set; }
         private ISetorRepository _setorRepository { get; set; }
         private IFuncionarioRepository _funcionarioRepository { get; set; }
+        private ITipoDespesaRepository _tipoDespesaRepository { get; set; }
         public DespesaController()
         {
             _despesaRepository = new DespesaRepository();
             _setorRepository = new SetorRepository();
             _funcionarioRepository = new FuncionarioRepository();
+            _tipoDespesaRepository = new TipoDespesaRepository();
         }
 
         [HttpGet]
@@ -45,6 +47,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
         {
             Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
 
+            TipoDespesa tipoDespesa = _tipoDespesaRepository.SearchById(despesa.IdTipoDespesa);
+
+            if (tipoDespesa == null)
+            {
+                return StatusCode(404, "Tipo despesa nao existe");
+            }
+
             despesa.IdSetor = funcionario.IdSetor;
 
             _despesaRepository.Create(despesa);
@@ -58,6 +67,16 @@ namespace BackEnd_GestaoFinanceira.Controllers
             Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
 
             Despesa despesaAntiga = _despesaRepository.SearchById(despesa.IdDespesa);
+
+            if (despesa.IdTipoDespesa != null)
+            {
+                TipoDespesa tipoDespesa = _tipoDespesaRepository.SearchById(despesa.IdTipoDespesa);
+
+                if (tipoDespesa == null)
+                {
+                    return StatusCode(404, "Tipo despesa nao existe");
+                }
+            }
 
             if (despesaAntiga == null)
             {

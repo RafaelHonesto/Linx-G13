@@ -32,6 +32,16 @@ namespace BackEnd_GestaoFinanceira.Repositories
             return _ctx.TipoDespesas.ToList();
         }
 
+        public List<TipoDespesa> ReadBySetorId(int? idSetor)
+        {
+            return _ctx.TipoDespesas.Where(x => x.IdSetor == idSetor).Include(x => x.Despesas).ToList();
+        }
+
+        public TipoDespesa SearchById(int? idTipoDespesa)
+        {
+            return _ctx.TipoDespesas.Find(idTipoDespesa);
+        }
+
         public void Update(TipoDespesa tipoDespesa)
         {
             TipoDespesa tipoDespesaAntigo = _ctx.TipoDespesas.Find(tipoDespesa.IdTipoDespesa);
