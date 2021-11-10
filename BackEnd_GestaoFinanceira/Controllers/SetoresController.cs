@@ -1,6 +1,7 @@
 ﻿using BackEnd_GestaoFinanceira.Domains;
 using BackEnd_GestaoFinanceira.Interfaces;
 using BackEnd_GestaoFinanceira.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -22,6 +23,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _setorRepository = new SetorRepository();
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpGet]
         public IActionResult ListarSetores()
         {
@@ -30,6 +32,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, Setores);
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpPost]
         public IActionResult CriarSetor(Setor setor)
         {
@@ -38,6 +41,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(201, "Setor criado");
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpPut]
         public IActionResult EditarSetor(Setor setor)
         {
@@ -53,6 +57,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Setor editado");
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpDelete]
         public IActionResult DeletarSetor(int idSetor)
         {

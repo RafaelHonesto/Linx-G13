@@ -2,6 +2,7 @@
 using BackEnd_GestaoFinanceira.Interfaces;
 using BackEnd_GestaoFinanceira.Model;
 using BackEnd_GestaoFinanceira.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
@@ -41,8 +42,6 @@ namespace BackEnd_GestaoFinanceira.Controllers
                 return StatusCode(400, "Email ou senha incorreto");
             }
 
-            int idFuncionario = _funcionarioRepository.FindByUserId(usuario.IdUsuario).IdFuncionario;
-
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("F@CPgNl1HZ8nxb*&GgN5D&Gq*BiR@00757s9ylbtMo#!op%ZJe"));
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);
 
@@ -61,10 +60,14 @@ namespace BackEnd_GestaoFinanceira.Controllers
                     signingCredentials: credentials
                 );
 
-            return StatusCode(200, token);
+            return StatusCode(200, new
+            { 
+                token = new JwtSecurityTokenHandler().WriteToken(token)
+            });
         }
 
         //Metodos do administrador
+        [Authorize(Roles = "1")]
         [HttpPost("Criar")]
         public IActionResult CriarUsuario(UsuarioFuncionario usuarioFuncionario)
         {
@@ -88,6 +91,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpPut]
         public IActionResult EditarUsuario(UsuarioFuncionario usuarioFuncionario)
         {
@@ -118,6 +122,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             }
         }
 
+        [Authorize(Roles = "1")]
         [HttpDelete]
         public IActionResult DeletarUsuario(int idUsuario)
         {
@@ -142,6 +147,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         }
 
         //Metodos do Gestor
+        [Authorize(Roles = "2")]
         [HttpPost("Gestor")]
         public IActionResult CadastrarUsuarioNoSetor(UsuarioFuncionario usuarioFuncionario)
         {
@@ -158,6 +164,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(201, "Funcionario criado");
         }
 
+        [Authorize(Roles = "2")]
         [HttpPut("Gestor")]
         public IActionResult EditarUsuarioNoSetor(UsuarioFuncionario usuarioFuncionario)
         {
@@ -188,6 +195,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             }
         }
 
+        [Authorize(Roles = "2")]
         [HttpDelete("Gestor")]
         public IActionResult DeletarUsuarioNoSetor(int idUsuario)
         {

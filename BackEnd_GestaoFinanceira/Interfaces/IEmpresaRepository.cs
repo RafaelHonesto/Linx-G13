@@ -24,7 +24,6 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// Atualiza empresa
         /// </summary>
         /// <param name="empresa">empresa a ser atualizada</param>
-        /// <param name="idSetor">id do setor da empresa a ser atualizada</param>
         public void Update(Empresa empresa);
 
         /// <summary>

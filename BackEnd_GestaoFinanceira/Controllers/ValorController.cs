@@ -1,6 +1,7 @@
 ﻿using BackEnd_GestaoFinanceira.Domains;
 using BackEnd_GestaoFinanceira.Interfaces;
 using BackEnd_GestaoFinanceira.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -26,6 +27,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _empresaRepository = new EmpresaRepository();
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpGet]
         public IActionResult ListarValores()
         {
@@ -36,6 +38,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, Valores);
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpPost]
         public IActionResult CriarValor(Valore valor)
         {

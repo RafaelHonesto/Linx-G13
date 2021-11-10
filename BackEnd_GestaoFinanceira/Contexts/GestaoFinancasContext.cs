@@ -31,7 +31,9 @@ namespace BackEnd_GestaoFinanceira.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=DESKTOP-KVKV9TT\\SA; initial catalog=GESTAOFINANCAS; user Id=sa; pwd=senai@132");
+                // optionsBuilder.UseSqlServer("Data Source=DESKTOP-KVKV9TT\\SA; initial catalog=GESTAOFINANCAS; user Id=sa; pwd=senai@132");
+
+                optionsBuilder.UseSqlServer("Data Source=db-linx.cmwveh4yh3n9.us-east-1.rds.amazonaws.com; initial catalog=GESTAOFINANCAS; user id=admin_linx; pwd=Knives132");
             }
         }
 

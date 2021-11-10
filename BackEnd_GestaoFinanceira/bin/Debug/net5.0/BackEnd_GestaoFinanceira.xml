@@ -1,0 +1,312 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>BackEnd_GestaoFinanceira</name>
+    </assembly>
+    <members>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IDespesaRepository.Create(BackEnd_GestaoFinanceira.Domains.Despesa)">
+            <summary>
+            Cria despesa
+            </summary>
+            <param name="despesa">despesa a ser adicionada</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IDespesaRepository.Read(System.Int32)">
+            <summary>
+            Lista despesas
+            </summary>
+            <param name="idSetor">id do setor a listar as despesas</param>
+            <returns>Lista de despesas</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IDespesaRepository.Update(BackEnd_GestaoFinanceira.Domains.Despesa)">
+            <summary>
+            Atualiza despesa
+            </summary>
+            <param name="despesa">despesa a ser atualizada</param>
+            <returns>confirmacao de atualizacao</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IDespesaRepository.Delete(System.Int32)">
+            <summary>
+            Deleta despesa
+            </summary>
+            <param name="idDespesa">id da empresa a ser deletada</param>
+            <returns>conirmacao de exclusao</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IDespesaRepository.SearchById(System.Int32)">
+            <summary>
+            Busca despesa pelo id
+            </summary>
+            <param name="idDespesa">id da despesa a ser listada</param>
+            <returns>despesa buscada</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IEmpresaRepository.Create(BackEnd_GestaoFinanceira.Domains.Empresa)">
+            <summary>
+            Cria empresa
+            </summary>
+            <param name="empresa">empresa a ser criada</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IEmpresaRepository.Read">
+            <summary>
+            Lista empresas
+            </summary>
+            <returns>empresa a ser listada</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IEmpresaRepository.Update(BackEnd_GestaoFinanceira.Domains.Empresa)">
+            <summary>
+            Atualiza empresa
+            </summary>
+            <param name="empresa">empresa a ser atualizada</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IEmpresaRepository.Delete(System.Int32)">
+            <summary>
+            Deleta empresa
+            </summary>
+            <param name="idEmpresa">id da empresa a ser deletada</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IEmpresaRepository.ReadBySetorId(System.Nullable{System.Int32})">
+            <summary>
+            Lista empresas de setor
+            </summary>
+            <param name="idSetor">id do setor</param>
+            <returns>lista de empresas</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IEmpresaRepository.SearchById(System.Nullable{System.Int32})">
+            <summary>
+            Busca empresa pelo id
+            </summary>
+            <param name="idEmpresa">id da empresa a ser usada</param>
+            <returns>Empresa buscada se encontrada</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IFuncionarioRepository.Create(BackEnd_GestaoFinanceira.Domains.Funcionario)">
+            <summary>
+            Cria funcionario
+            </summary>
+            <param name="funcionario">funcionario a ser criado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IFuncionarioRepository.Read">
+            <summary>
+            Lista funcionarios
+            </summary>
+            <returns>lista de funcionarios</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IFuncionarioRepository.Update(BackEnd_GestaoFinanceira.Domains.Funcionario)">
+            <summary>
+            Atualiza funcionario
+            </summary>
+            <param name="funcionario">funcionario a ser atualizado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IFuncionarioRepository.Delete(System.Int32)">
+            <summary>
+            Deleta funcionario
+            </summary>
+            <param name="id">id do funcionario a ser deletado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IFuncionarioRepository.FindByUserId(System.Int32)">
+            <summary>
+            Busca funcionario pelo id do funcionario
+            </summary>
+            <param name="idUsuario">id do usuario do funcionario a ser buscado</param>
+            <returns>funcionario</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ISetorRepository.Create(BackEnd_GestaoFinanceira.Domains.Setor)">
+            <summary>
+            Cria setor
+            </summary>
+            <param name="setor">setor a ser criado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ISetorRepository.Read">
+            <summary>
+            Lista setores
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ISetorRepository.Update(BackEnd_GestaoFinanceira.Domains.Setor)">
+            <summary>
+            Atualiza setor
+            </summary>
+            <param name="setor">setor a ser atualizado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ISetorRepository.Delete(System.Int32)">
+            <summary>
+            Deleta setor
+            </summary>
+            <param name="id">setor a ser deletado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ISetorRepository.SearchById(System.Int32)">
+            <summary>
+            Busca setor pelo id
+            </summary>
+            <param name="id">id do setor buscado</param>
+            <returns>setor buscado se encontrado</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ITipoUsuarioRepository.Create(BackEnd_GestaoFinanceira.Domains.TipoUsuario)">
+            <summary>
+            Cria tipo de usuario
+            </summary>
+            <param name="tipoUsuario">tipo de usuario a ser crciado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ITipoUsuarioRepository.Read">
+            <summary>
+            Lista tipos de usuario
+            </summary>
+            <returns>Lista de tipos de usuario</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ITipoUsuarioRepository.Update(BackEnd_GestaoFinanceira.Domains.TipoUsuario)">
+            <summary>
+            Atualiza tipo de usuario
+            </summary>
+            <param name="tipoUsuario">tipo de usuario a ser atualizado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ITipoUsuarioRepository.Delete(System.Int32)">
+            <summary>
+            Deleta tipo de usuario
+            </summary>
+            <param name="id">id do usuario a ser deletado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IUsuarioRepository.Create(BackEnd_GestaoFinanceira.Domains.Usuario)">
+            <summary>
+            Cria usuario
+            </summary>
+            <param name="usuario">usuario a ser criado</param>
+            <returns>usuario criado</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IUsuarioRepository.Read">
+            <summary>
+            Lista usuarios
+            </summary>
+            <returns>lista de usuarios</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IUsuarioRepository.Update(BackEnd_GestaoFinanceira.Domains.Usuario)">
+            <summary>
+            Atualiza usuario
+            </summary>
+            <param name="usuario">usuario a ser atualizado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IUsuarioRepository.Delete(System.Int32)">
+            <summary>
+            Deleta usuario
+            </summary>
+            <param name="id">usuario a ser deletado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IUsuarioRepository.VerificarEmailESenha(BackEnd_GestaoFinanceira.Domains.Usuario)">
+            <summary>
+            Verifica email e senha
+            </summary>
+            <param name="usuario">Usuario com email e senha</param>
+            <returns>Usuario se encontrado</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IUsuarioRepository.FindByUserId(System.Int32)">
+            <summary>
+            Busca usuario pelo id
+            </summary>
+            <param name="id">id do usuario a ser buscado</param>
+            <returns>usuario se encontrado</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IValoreRepository.Create(BackEnd_GestaoFinanceira.Domains.Valore)">
+            <summary>
+            Cria valor
+            </summary>
+            <param name="valor">valor a ser criado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IValoreRepository.Read">
+            <summary>
+            Lista valores
+            </summary>
+            <returns>lista de valores</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IValoreRepository.Update(BackEnd_GestaoFinanceira.Domains.Valore)">
+            <summary>
+            Atualiza valor
+            </summary>
+            <param name="valor">valor a ser atualizado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IValoreRepository.Delete(System.Int32)">
+            <summary>
+            Deleta valor
+            </summary>
+            <param name="id">id do valor a ser deletado</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IValoreRepository.ReadBySetorId(System.Nullable{System.Int32})">
+            <summary>
+            Lista valores pelo id
+            </summary>
+            <param name="idSetor">id do setor</param>
+            <returns>Lista de valores</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.DespesaRepository.Create(BackEnd_GestaoFinanceira.Domains.Despesa)">
+            <summary>
+            Cria despesa
+            Verifique se o id do setor no JWT e o mesmo da despesa
+            </summary>
+            <param name="despesa">Despesa a ser criada</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.DespesaRepository.Delete(System.Int32)">
+            <summary>
+            Deleta despesa
+            </summary>
+            <param name="idDespesa">id da despesa a ser deletada</param>
+            <returns>confirmacao de exclusao</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.DespesaRepository.Read(System.Int32)">
+            <summary>
+            Lista despesas do setor
+            </summary>
+            <param name="idSetor">id do setor a listar despesas</param>
+            <returns>Lista de despesas do setor</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.DespesaRepository.Update(BackEnd_GestaoFinanceira.Domains.Despesa)">
+            <summary>
+            Atualiza despesa
+            </summary>
+            <param name="despesa">despesa do setor a ser atualizada</param>
+            <returns>confirmacao de atualizacao</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.EmpresaRepository.Create(BackEnd_GestaoFinanceira.Domains.Empresa)">
+            <summary>
+            Cria empresa
+            Insira o setor da empresa que estiver no JWT
+            </summary>
+            <param name="empresa">empresa a ser criada</param>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.EmpresaRepository.Delete(System.Int32)">
+            <summary>
+            Deleta empresa
+            </summary>
+            <param name="idEmpresa">id da empresa a ser deletada</param>
+            <returns>confirmacao de exclusao</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.EmpresaRepository.Read">
+            <summary>
+            Lista empresas pelo id do setor no JWT
+            </summary>
+            <returns>lista de empresas</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.EmpresaRepository.ReadBySetorId(System.Nullable{System.Int32})">
+            <summary>
+            Lista empresas pelo id do setor
+            </summary>
+            <param name="idSetor">id do setor</param>
+            <returns>Lista de empresas</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.EmpresaRepository.SearchById(System.Nullable{System.Int32})">
+            <summary>
+            Busca empresa pelo id
+            </summary>
+            <param name="idEmpresa">id da empresa a ser buscada</param>
+            <returns>Empresa se encontrada</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.EmpresaRepository.Update(BackEnd_GestaoFinanceira.Domains.Empresa)">
+            <summary>
+            Atualiza empresa
+            verifique se o id do setor no JWT 
+            </summary>
+            <param name="empresa">empresa a ser atualizada</param>
+            <returns>confirmacao de atualizacao</returns>
+        </member>
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.UsuarioRepository.Create(BackEnd_GestaoFinanceira.Domains.Usuario)">
+            <summary>
+            Cria usuario
+            </summary>
+            <param name="usuario">usuario a ser criado</param>
+        </member>
+    </members>
+</doc>

@@ -1,6 +1,7 @@
 ﻿using BackEnd_GestaoFinanceira.Domains;
 using BackEnd_GestaoFinanceira.Interfaces;
 using BackEnd_GestaoFinanceira.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,6 +25,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _funcionarioRepository = new FuncionarioRepository();
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpGet]
         public IActionResult ListarEmpresas()
         {
@@ -34,6 +36,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, Empresas);
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpPost]
         public IActionResult CriarEmpresa(Empresa empresa)
         {
@@ -46,6 +49,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Empresa criada");
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpPut]
         public IActionResult EditarEmpresa(Empresa empresa)
         {
@@ -63,6 +67,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Empresa editada");
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpDelete]
         public IActionResult DeletarEmpresa(int idEmpresa)
         {

@@ -69,7 +69,7 @@ namespace BackEnd_GestaoFinanceira.Repositories
 
         public Usuario VerificarEmailESenha(Usuario usuario)
         {
-            return _ctx.Usuarios.Include(x => x.Funcionario).FirstOrDefault(x => x.Acesso == usuario.Acesso && x.SenhaDeAcesso == usuario.Acesso);
+            return _ctx.Usuarios.Include(x => x.Funcionario).FirstOrDefault(x => x.Acesso == usuario.Acesso && x.SenhaDeAcesso == usuario.SenhaDeAcesso);
         }
     }
 }

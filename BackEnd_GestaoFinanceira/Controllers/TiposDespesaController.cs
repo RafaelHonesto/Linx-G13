@@ -1,6 +1,7 @@
 ﻿using BackEnd_GestaoFinanceira.Domains;
 using BackEnd_GestaoFinanceira.Interfaces;
 using BackEnd_GestaoFinanceira.Repositories;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -24,6 +25,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _funcionarioRepository = new FuncionarioRepository();
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpGet]
         public IActionResult ListarTiposDespesa()
         {
@@ -34,6 +36,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, TiposDespesa);
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpPost]
         public IActionResult CriarTipoDespesa(TipoDespesa tipoDespesa)
         {
@@ -46,6 +49,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(201, "Tipo de despesa criada");
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpPut]
         public IActionResult EditarTipoDespesa(TipoDespesa tipoDespesa)
         {
@@ -68,6 +72,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Tipo de despesa editado");
         }
 
+        [Authorize(Roles = "2, 3")]
         [HttpDelete]
         public IActionResult DeletarTipoDespesa(int idTipoDespesa)
         {
