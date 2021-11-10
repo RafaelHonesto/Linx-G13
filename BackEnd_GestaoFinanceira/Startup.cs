@@ -54,6 +54,30 @@ namespace BackEnd_GestaoFinanceira
                 var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
+
+                c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme()
+                {
+                    Name = "Authorization",
+                    Type = SecuritySchemeType.ApiKey,
+                    Scheme = "Bearer",
+                    BearerFormat = "JWT",
+                    In = ParameterLocation.Header,
+                    Description = "JWT Authorization header using the Bearer scheme."
+                });
+                c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                {
+                    {
+                          new OpenApiSecurityScheme
+                          {
+                              Reference = new OpenApiReference
+                              {
+                                  Type = ReferenceType.SecurityScheme,
+                                  Id = "Bearer"
+                              }
+                          },
+                         new string[] {}
+                    }
+                });
             });
 
             services
@@ -75,19 +99,16 @@ namespace BackEnd_GestaoFinanceira
                         ValidateAudience = true,
 
                         // define que o tempo de vida ser� validado
-                        ValidateLifetime = true,
+                        ValidateLifetime = false,
 
                         // forma de criptografia e a chave de autentica��o
                         IssuerSigningKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes("F@CPgNl1HZ8nxb*&GgN5D&Gq*BiR@00757s9ylbtMo#!op%ZJe")),
 
-                        // verifica o tempo de expira��o do token
-                        ClockSkew = TimeSpan.FromMinutes(30),
-
                         // define o nome da issuer, de onde est� vindo
-                        ValidIssuer = "BackEnd_GestaoFinanceira",
+                        ValidIssuer = "GestaoFinancas",
 
                         // define o nome da audience, para onde est� indo
-                        ValidAudience = "BackEnd_GestaoFinanceira"
+                        ValidAudience = "GestaoFinancas"
                     };
                 });
 
