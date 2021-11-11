@@ -16,22 +16,47 @@ using System.Threading.Tasks;
 
 namespace BackEnd_GestaoFinanceira.Controllers
 {
+
+    /// <summary>
+    /// Controller responsável pelos endpoints (URLs) referentes aos usuários
+    /// </summary>
+
+    // Define que a rota de uma requisição será no formato dominio/api/nomeController
+    // ex: http://localhost:5000/api/usuarios
     [Route("api/[controller]")]
+
+    // Define que é um controlador de API
     [ApiController]
+
+    // Define que o tipo de resposta da API será no formato JSON
     [Produces("application/json")]
+
+    // Define que somente o administrador pode acessar os métodos
     public class UsuarioController : ControllerBase
     {
+        /// <summary>
+        /// Objeto _usuarioRepository que irá receber todos os métodos definidos na interface IuUsuarioRepository
+        /// </summary>
         private IUsuarioRepository _usuarioRepository { get; set; }
+
+        /// <summary>
+        /// Objeto _funcionarioRepository que irá receber todos os métodos definidos na interface IFuncionarioRepository
+        /// </summary>
         private IFuncionarioRepository _funcionarioRepository { get; set; }
 
+        /// <summary>
+        /// Instancia o objeto _usuarioRepository e _funcionarioRepository para que haja a referência aos métodos no repositório
+        /// </summary>
         public UsuarioController()
         {
             _usuarioRepository = new UsuarioRepository();
             _funcionarioRepository = new FuncionarioRepository();
         }
 
-        // Metodos comuns
 
+        /// <summary>
+        /// Login 
+        /// </summary>
         [HttpPost]
         public IActionResult Login(Usuario usuario)
         {
@@ -66,7 +91,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
             });
         }
 
-        //Metodos do administrador
+
+        /// <summary>
+        /// Adm cadastra um novo gestor
+        /// </summary>
+        /// <param name="usuarioFuncionario">Objeto usuarioFuncionario que será cadastrado</param>
+        /// <returns>Um status code 201 - Created</returns>
+        // Define que somente o administrador pode acessar o método
         [Authorize(Roles = "1")]
         [HttpPost("Criar")]
         public IActionResult CriarUsuario(UsuarioFuncionario usuarioFuncionario)
@@ -91,6 +122,12 @@ namespace BackEnd_GestaoFinanceira.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Adm Atualiza um usuário existente
+        /// </summary>
+        /// <param name="usuarioFuncionario">Objeto com as novas informações</param>
+        /// <returns>Um status code 204 - No Content</returns>
         [Authorize(Roles = "1")]
         [HttpPut]
         public IActionResult EditarUsuario(UsuarioFuncionario usuarioFuncionario)
@@ -122,6 +159,12 @@ namespace BackEnd_GestaoFinanceira.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Adm deleta um usuário existente
+        /// </summary>
+        /// <param name="idUsuario">ID do usuário que será deletado</param>
+        /// <returns>Um status code 204 - No Content</returns>
         [Authorize(Roles = "1")]
         [HttpDelete]
         public IActionResult DeletarUsuario(int idUsuario)
@@ -146,7 +189,12 @@ namespace BackEnd_GestaoFinanceira.Controllers
             }
         }
 
-        //Metodos do Gestor
+
+        /// <summary>
+        /// Gestor cadastra um novo usuário
+        /// </summary>
+        /// <param name="usuarioFuncionario">Objeto usuarioFuncionario que será cadastrado</param>
+        /// <returns>Um status code 201 - Created</returns>
         [Authorize(Roles = "2")]
         [HttpPost("Gestor")]
         public IActionResult CadastrarUsuarioNoSetor(UsuarioFuncionario usuarioFuncionario)
@@ -164,6 +212,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(201, "Funcionario criado");
         }
 
+
+        /// <summary>
+        /// Gestor atualiza um usuário existente
+        /// </summary>
+        /// <param name="id">ID do usuário que será atualizado</param>
+        /// <param name="usuarioFuncionario">Objeto com as novas informações</param>
+        /// <returns>Um status code 204 - No Content</returns>
         [Authorize(Roles = "2")]
         [HttpPut("Gestor")]
         public IActionResult EditarUsuarioNoSetor(UsuarioFuncionario usuarioFuncionario)
@@ -195,6 +250,12 @@ namespace BackEnd_GestaoFinanceira.Controllers
             }
         }
 
+
+        /// <summary>
+        /// Gestor deleta um usuário existente
+        /// </summary>
+        /// <param name="idUsuario">ID do usuário que será deletado</param>
+        /// <returns>Um status code 204 - No Content</returns>
         [Authorize(Roles = "2")]
         [HttpDelete("Gestor")]
         public IActionResult DeletarUsuarioNoSetor(int idUsuario)

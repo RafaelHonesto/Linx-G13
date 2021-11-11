@@ -7465,19 +7465,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\User\\.nuget\\packages\\": {}
+    "C:\\Users\\50824110803\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\User\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
+      "projectUniqueName": "C:\\Users\\50824110803\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
       "projectName": "BackEnd_GestaoFinanceira",
-      "projectPath": "C:\\Users\\User\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
-      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\User\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\obj\\",
+      "projectPath": "C:\\Users\\50824110803\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
+      "packagesPath": "C:\\Users\\50824110803\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\50824110803\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
       "configFilePaths": [
-        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\50824110803\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

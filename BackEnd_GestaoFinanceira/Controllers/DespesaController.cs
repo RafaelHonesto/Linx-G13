@@ -13,9 +13,23 @@ using System.Threading.Tasks;
 
 namespace BackEnd_GestaoFinanceira.Controllers
 {
+
+    /// <summary>
+    /// Controller responsável pelos endpoints (URLs) referentes aos eventos
+    /// </summary>
+
+    // Define que a rota de uma requisição será no formato dominio/api/nomeController
+    // ex: http://localhost:5000/api/despesa
     [Route("api/[controller]")]
+
+    // Define que é um controlador de API
     [ApiController]
+
+    // Define que o tipo de resposta da API será no formato JSON
     [Produces("application/json")]
+
+    // Define que qualquer usuário autenticado pode acessar aos métodos
+    // [Authorize]
     public class DespesaController : ControllerBase
     {
         private IDespesaRepository _despesaRepository { get; set; }
@@ -30,6 +44,11 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _tipoDespesaRepository = new TipoDespesaRepository();
         }
 
+
+        /// <summary>
+        /// Lista todas as despesas
+        /// </summary>
+        /// <returns>Uma lista de despesa e um status code 200 - Ok</returns>
         [Authorize(Roles = "2, 3")]
         [HttpGet]
         public IActionResult ListarDespesasDoSetor(int idSetor)
@@ -44,6 +63,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, Despesas);
         }
 
+
+        /// <summary>
+        /// Cadastra uma nova despesa
+        /// </summary>
+        /// <param name="despesa">Objeto despesa que será cadastrado</param>
+        /// <returns>Um status code 201 - Created</returns>
+        // Define que somente o setor funcionario pode acessar o método
         [Authorize(Roles = "2, 3")]
         [HttpPost]
         public IActionResult CriarDespesaDoSetor(Despesa despesa)
@@ -64,6 +90,14 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(201, "Despesa criada");
         }
 
+
+        /// <summary>
+        /// Atualiza uma despesa existente
+        /// </summary>
+        /// <param name="id">ID do despesa que será atualizada</param>
+        /// <param name="despesa">Objeto com as novas informações</param>
+        /// <returns>Um status code 204 - No Content</returns>
+        // Define que somente o administrador pode acessar o método
         [Authorize(Roles = "2, 3")]
         [HttpPut]
         public IActionResult EditarDespesaDoSetor(Despesa despesa)
@@ -97,8 +131,15 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Despesa atualizada");
         }
 
-        [Authorize(Roles = "2, 3" +
-            "")]
+
+        /// <summary>
+        /// Deleta uma despesa existente
+        /// </summary>
+        /// <param name="id">ID da despesa que será deletado</param>
+        /// <param name="despesa">Objeto com as novas informações</param>
+        /// <returns>Um status code 204 - No Content</returns>
+        // Define que somente o gestor e usuario pode acessar o método
+        [Authorize(Roles = "2, 3")]
         [HttpDelete]
         public IActionResult DeletarDespesaDoSetor(int despesa)
         {
