@@ -2,6 +2,7 @@
 using BackEnd_GestaoFinanceira.Interfaces;
 using BackEnd_GestaoFinanceira.Model;
 using BackEnd_GestaoFinanceira.Repositories;
+using BackEnd_GestaoFinanceira.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -68,8 +69,8 @@ namespace BackEnd_GestaoFinanceira.Controllers
 
         //Metodos do administrador
         [Authorize(Roles = "1")]
-        [HttpPost("Criar")]
-        public IActionResult CriarUsuario(UsuarioFuncionario usuarioFuncionario)
+        [HttpPost("Criar"), DisableRequestSizeLimit]
+        public IActionResult CriarUsuario([FromForm] UsuarioFuncionario usuarioFuncionario)
         {
             try
             {
@@ -81,7 +82,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
 
                 funcionario.IdUsuario = usuario.IdUsuario;
 
+                Upload up = new Upload();
+
                 _funcionarioRepository.Create(funcionario);
+
+                Funcionario funcionarioBuscado = _funcionarioRepository.FindByUserId(usuario.IdUsuario);
+
+                var imagem = up.UploadFile(Request.Form.Files[0], funcionarioBuscado.IdFuncionario);
 
                 return StatusCode(201);
             }
