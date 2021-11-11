@@ -12,9 +12,24 @@ using System.Threading.Tasks;
 
 namespace BackEnd_GestaoFinanceira.Controllers
 {
+
+    /// <summary>
+    /// Controller responsável pelos endpoints (URLs) referentes aos eventos
+    /// </summary>
+
+    // Define que é um controlador de API
     [Route("api/[controller]")]
+
+    // Define que a rota de uma requisição será no formato dominio/api/nomeController
+    // ex: http://localhost:5000/api/despesa
     [ApiController]
+
+    // Define que o tipo de resposta da API será no formato JSON
     [Produces("application/json")]
+
+
+    // Define que qualquer usuário autenticado pode acessar aos métodos
+    // [Authorize]
     public class TiposDespesaController : ControllerBase
     {
         private ITipoDespesaRepository _tipoDespesaRepository { get; set; }
@@ -25,6 +40,11 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _funcionarioRepository = new FuncionarioRepository();
         }
 
+
+        /// <summary>
+        /// Lista todos os tipos de despesas
+        /// </summary>
+        /// <returns>Uma lista de despesa e um status code 200 - Ok</returns>
         [Authorize(Roles = "2, 3")]
         [HttpGet]
         public IActionResult ListarTiposDespesa()
@@ -36,6 +56,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, TiposDespesa);
         }
 
+
+        /// <summary>
+        /// Cria uma nova despesa
+        /// </summary>
+        /// <param name="tipoDespesa">Objeto novoEvento que será cadastrado</param>
+        /// <returns>Um status code 201 - Created</returns>
+        // Define que somente o administrador e gestor pode acessar o método
         [Authorize(Roles = "2, 3")]
         [HttpPost]
         public IActionResult CriarTipoDespesa(TipoDespesa tipoDespesa)
@@ -49,6 +76,14 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(201, "Tipo de despesa criada");
         }
 
+
+        /// <summary>
+        /// Atualiza uma despesa existente
+        /// </summary>
+        /// <param name="id">ID da despesa que será atualizado</param>
+        /// <param name="tipoDespesa">Objeto com as novas informações</param>
+        /// <returns>Um status code 204 - No Content</returns>
+        // Define que somente o administrador e gestor pode acessar o método
         [Authorize(Roles = "2, 3")]
         [HttpPut]
         public IActionResult EditarTipoDespesa(TipoDespesa tipoDespesa)
@@ -72,6 +107,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Tipo de despesa editado");
         }
 
+
+        /// <summary>
+        /// Deleta uma despesa existente
+        /// </summary>
+        /// <param name="idTipoDespesa">ID da despesa que será deletado</param>
+        /// <returns>Um status code 204 - No Content</returns>
+        // Define que somente o administrador e gestor pode acessar o método
         [Authorize(Roles = "2, 3")]
         [HttpDelete]
         public IActionResult DeletarTipoDespesa(int idTipoDespesa)
