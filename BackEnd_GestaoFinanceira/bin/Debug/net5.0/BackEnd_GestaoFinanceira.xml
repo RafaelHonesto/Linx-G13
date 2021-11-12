@@ -138,6 +138,13 @@
             <param name="id">id do setor buscado</param>
             <returns>setor buscado se encontrado</returns>
         </member>
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ISetorRepository.BuscarNome(System.String)">
+            <summary>
+            Busca setor pelo id
+            </summary>
+            <param name="id">id do setor buscado</param>
+            <returns>setor buscado se encontrado</returns>
+        </member>
         <member name="M:BackEnd_GestaoFinanceira.Interfaces.ITipoUsuarioRepository.Create(BackEnd_GestaoFinanceira.Domains.TipoUsuario)">
             <summary>
             Cria tipo de usuario

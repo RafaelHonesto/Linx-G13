@@ -37,6 +37,11 @@ namespace BackEnd_GestaoFinanceira.Repositories
             return _ctx.Setors.Find(id);
         }
 
+        public Setor BuscarNome(string nome)
+        {
+            return _ctx.Setors.FirstOrDefault(c => c.Nome == nome);
+        }
+
         public void Update(Setor setor)
         {
             Setor setorAntigo = _ctx.Setors.Find(setor.IdSetor);

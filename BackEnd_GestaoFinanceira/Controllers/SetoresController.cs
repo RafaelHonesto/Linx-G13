@@ -32,6 +32,23 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, Setores);
         }
 
+        [Authorize]
+        [HttpGet("buscar/{nome}")]
+        public IActionResult BucarNome(string nome)
+        {
+            try
+            {
+                Setor buscado = _setorRepository.BuscarNome(nome);
+
+                return Ok(buscado);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex);
+            }
+
+        }
+
         [Authorize(Roles = "1")]
         [HttpPost]
         public IActionResult CriarSetor(Setor setor)

@@ -38,5 +38,12 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// <param name="id">id do setor buscado</param>
         /// <returns>setor buscado se encontrado</returns>
         public Setor SearchById(int id);
+
+        /// <summary>
+        /// Busca setor pelo id
+        /// </summary>
+        /// <param name="id">id do setor buscado</param>
+        /// <returns>setor buscado se encontrado</returns>
+        public Setor BuscarNome(string nome);
     }
 }
