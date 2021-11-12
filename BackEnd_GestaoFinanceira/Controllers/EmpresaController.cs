@@ -12,19 +12,46 @@ using System.Threading.Tasks;
 
 namespace BackEnd_GestaoFinanceira.Controllers
 {
+    /// <summary>
+    /// Controller responsável pelos endpoints (URLs) referentes aos eventos
+    /// </summary>
+
+    // Define que a rota de uma requisição será no formato dominio/api/nomeController
+    // ex: http://localhost:5000/api/empresa
     [Route("api/[controller]")]
+
+    // Define que é um controlador de API
     [ApiController]
+
+    // Define que o tipo de resposta da API será no formato JSON
     [Produces("application/json")]
+
+    // Define que qualquer usuário autenticado pode acessar aos métodos
+    // [Authorize]
     public class EmpresaController : ControllerBase
     {
+        /// <summary>
+        /// Objeto _empresaRepository que irá receber todos os métodos definidos na interface IEmpresaRepository
+        /// </summary>
         private IEmpresaRepository _empresaRepository { get; set; }
+        /// <summary>
+        /// Objeto _funcionarioRepository que irá receber todos os métodos definidos na interface IFuncionarioRepository
+        /// </summary>
         private IFuncionarioRepository _funcionarioRepository { get; set; }
+
+        /// <summary>
+        /// Instancia o objeto _eventoRepository para que haja a referência aos métodos no repositório
+        /// </summary>
         public EmpresaController()
         {
             _empresaRepository = new EmpresaRepository();
             _funcionarioRepository = new FuncionarioRepository();
         }
 
+        /// <summary>
+        /// Lista todas as empresas
+        /// </summary>
+        /// <returns>Uma lista de empreas e um status code 200 - Ok</returns>
         [Authorize(Roles = "2, 3")]
         [HttpGet]
         public IActionResult ListarEmpresas()
@@ -36,6 +63,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, Empresas);
         }
 
+
+        /// <summary>
+        /// Cadastra uma nova empresa
+        /// </summary>
+        /// <param name="empresa">Objeto empresa que será cadastrado</param>
+        /// <returns>Um status code 201 - Created</returns>
+        // Define que somente o gestor e usuario pode acessar o método
         [Authorize(Roles = "2, 3")]
         [HttpPost]
         public IActionResult CriarEmpresa(Empresa empresa)
@@ -49,6 +83,14 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Empresa criada");
         }
 
+
+        /// <summary>
+        /// Atualiza uma empresa existente
+        /// </summary>
+        /// <param name="id">ID da empresa que será atualizado</param>
+        /// <param name="empresa">Objeto com as novas informações</param>
+        /// <returns>Um status code 204 - No Content</returns>
+        // Define que somente o gestor e ususario pode acessar o método
         [Authorize(Roles = "2, 3")]
         [HttpPut]
         public IActionResult EditarEmpresa(Empresa empresa)
@@ -67,6 +109,12 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Empresa editada");
         }
 
+        /// <summary>
+        /// Deleta uma empresa existente
+        /// </summary>
+        /// <param name="idEmpresa">ID do empresa que será deletado</param>
+        /// <returns>Um status code 204 - No Content</returns>
+        // Define que somente o gestor e ususario pode acessar o método
         [Authorize(Roles = "2, 3")]
         [HttpDelete]
         public IActionResult DeletarEmpresa(int idEmpresa)

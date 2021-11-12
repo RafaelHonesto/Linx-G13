@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
@@ -124,6 +125,13 @@ namespace BackEnd_GestaoFinanceira
             }
 
             app.UseRouting();
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                        Path.Combine(Directory.GetCurrentDirectory(), "Resources")),
+                RequestPath = "/Resources"
+            });
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();

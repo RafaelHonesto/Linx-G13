@@ -12,9 +12,22 @@ using System.Threading.Tasks;
 
 namespace BackEnd_GestaoFinanceira.Controllers
 {
+
+    /// <summary>
+    /// Controller responsável pelos endpoints (URLs) referentes aos usuários
+    /// </summary>
+
+    // Define que a rota de uma requisição será no formato dominio/api/nomeController
+    // ex: http://localhost:5000/api/valores
     [Route("api/[controller]")]
+
+    // Define que é um controlador de API
     [ApiController]
+
+    // Define que o tipo de resposta da API será no formato JSON
     [Produces("application/json")]
+
+
     public class ValorController : ControllerBase
     {
         private IValoreRepository _valoreRepository { get; set; }
@@ -27,6 +40,11 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _empresaRepository = new EmpresaRepository();
         }
 
+
+        /// <summary>
+        /// Lista todos os valores
+        /// </summary>
+        /// <returns>Uma lista de eventos e um status code 200 - Ok</returns>
         [Authorize(Roles = "2, 3")]
         [HttpGet]
         public IActionResult ListarValores()
@@ -38,6 +56,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, Valores);
         }
 
+
+        /// <summary>
+        /// Cadastra um novo valor
+        /// </summary>
+        /// <param name="valor">Objeto valor que será cadastrado</param>
+        /// <returns>Um status code 201 - Created</returns>
+        // Define que somente o administrador pode acessar o método
         [Authorize(Roles = "2, 3")]
         [HttpPost]
         public IActionResult CriarValor(Valore valor)
