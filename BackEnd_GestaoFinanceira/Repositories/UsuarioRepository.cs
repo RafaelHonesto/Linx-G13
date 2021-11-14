@@ -47,7 +47,9 @@ namespace BackEnd_GestaoFinanceira.Repositories
 
         public List<Usuario> Read()
         {
-            return _ctx.Usuarios.ToList();
+            return _ctx.Usuarios
+                .Include(x => x.Funcionario) 
+                .ToList();
         }
 
         public void Update(Usuario usuario)

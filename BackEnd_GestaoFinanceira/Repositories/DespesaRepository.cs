@@ -49,7 +49,7 @@ namespace BackEnd_GestaoFinanceira.Repositories
         /// </summary>
         /// <param name="idSetor">id do setor a listar despesas</param>
         /// <returns>Lista de despesas do setor</returns>
-        public List<Despesa> Read(int idSetor)
+        public List<Despesa> Read(int? idSetor)
         {
             return _ctx.Despesas.Where(x => x.IdSetor == idSetor).ToList();
         }

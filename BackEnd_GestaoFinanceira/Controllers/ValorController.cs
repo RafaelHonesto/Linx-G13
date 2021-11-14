@@ -45,7 +45,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// Lista todos os valores
         /// </summary>
         /// <returns>Uma lista de eventos e um status code 200 - Ok</returns>
-        [Authorize(Roles = "2, 3")]
+        [Authorize]
         [HttpGet]
         public IActionResult ListarValores()
         {
@@ -63,7 +63,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="valor">Objeto valor que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
         // Define que somente o administrador pode acessar o método
-        [Authorize(Roles = "2, 3")]
+        //[Authorize(Roles = "2, 3")]
         [HttpPost]
         public IActionResult CriarValor(Valore valor)
         {

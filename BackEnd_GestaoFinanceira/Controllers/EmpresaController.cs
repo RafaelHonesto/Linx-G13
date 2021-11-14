@@ -52,7 +52,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// Lista todas as empresas
         /// </summary>
         /// <returns>Uma lista de empreas e um status code 200 - Ok</returns>
-        [Authorize(Roles = "2, 3")]
+        [Authorize]
         [HttpGet]
         public IActionResult ListarEmpresas()
         {
@@ -70,7 +70,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="empresa">Objeto empresa que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
         // Define que somente o gestor e usuario pode acessar o método
-        [Authorize(Roles = "2, 3")]
+        [Authorize]
         [HttpPost]
         public IActionResult CriarEmpresa(Empresa empresa)
         {
@@ -91,7 +91,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="empresa">Objeto com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o gestor e ususario pode acessar o método
-        [Authorize(Roles = "2, 3")]
+        [Authorize]
         [HttpPut]
         public IActionResult EditarEmpresa(Empresa empresa)
         {
@@ -115,7 +115,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="idEmpresa">ID do empresa que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o gestor e ususario pode acessar o método
-        [Authorize(Roles = "2, 3")]
+        [Authorize]
         [HttpDelete]
         public IActionResult DeletarEmpresa(int idEmpresa)
         {

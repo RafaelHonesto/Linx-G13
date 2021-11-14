@@ -49,16 +49,14 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// Lista todas as despesas
         /// </summary>
         /// <returns>Uma lista de despesa e um status code 200 - Ok</returns>
-        [Authorize(Roles = "2, 3")]
+        [Authorize]
         [HttpGet]
-        public IActionResult ListarDespesasDoSetor(int idSetor)
+        public IActionResult ListarDespesasDoSetor()
         {
-            if (_setorRepository.SearchById(idSetor) == null)
-            {
-                return StatusCode(404, "Setor nao encontrado");
-            }
 
-            List<Despesa> Despesas = _despesaRepository.Read(idSetor);
+            Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
+
+            List<Despesa> Despesas = _despesaRepository.Read(funcionario.IdSetor);
 
             return StatusCode(200, Despesas);
         }
@@ -70,7 +68,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="despesa">Objeto despesa que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
         // Define que somente o setor funcionario pode acessar o método
-        [Authorize(Roles = "2, 3")]
+        [Authorize]
         [HttpPost]
         public IActionResult CriarDespesaDoSetor(Despesa despesa)
         {

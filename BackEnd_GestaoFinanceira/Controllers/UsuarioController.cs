@@ -2,7 +2,6 @@
 using BackEnd_GestaoFinanceira.Interfaces;
 using BackEnd_GestaoFinanceira.Model;
 using BackEnd_GestaoFinanceira.Repositories;
-using BackEnd_GestaoFinanceira.Utils;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -99,13 +98,15 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="usuarioFuncionario">Objeto usuarioFuncionario que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
         // Define que somente o administrador pode acessar o método
-        [Authorize(Roles = "1")]
+        [Authorize]
         [HttpPost("Criar"), DisableRequestSizeLimit]
-        public IActionResult CriarUsuario([FromForm] UsuarioFuncionario usuarioFuncionario)
+        public IActionResult CriarUsuario(UsuarioFuncionario usuarioFuncionario)
         {
             try
             {
                 Usuario usuario = usuarioFuncionario.usuario;
+
+                usuario.IdTipoUsuario = 2;
 
                 Funcionario funcionario = usuarioFuncionario.funcionario;
 
@@ -113,13 +114,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
 
                 funcionario.IdUsuario = usuario.IdUsuario;
 
-                Upload up = new Upload();
-
                 _funcionarioRepository.Create(funcionario);
-
-                Funcionario funcionarioBuscado = _funcionarioRepository.FindByUserId(usuario.IdUsuario);
-
-                var imagem = up.UploadFile(Request.Form.Files[0], funcionarioBuscado.IdFuncionario);
 
                 return StatusCode(201);
             }
@@ -202,11 +197,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// </summary>
         /// <param name="usuarioFuncionario">Objeto usuarioFuncionario que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
-        [Authorize(Roles = "2")]
+        [Authorize]
         [HttpPost("Gestor")]
         public IActionResult CadastrarUsuarioNoSetor(UsuarioFuncionario usuarioFuncionario)
         {
             Usuario usuario = usuarioFuncionario.usuario;
+
+            usuario.IdTipoUsuario = 3;
 
             Funcionario funcionario = usuarioFuncionario.funcionario;
             Usuario usuarioCadastrado = _usuarioRepository.Create(usuario);
@@ -282,6 +279,14 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _usuarioRepository.Delete(idUsuario);
 
             return StatusCode(200, "funcionario deletado");
+        }
+
+        [HttpGet]
+        public IActionResult ListarUsuario ()
+        {
+            List <Usuario> usuarios = _usuarioRepository.Read();
+
+            return Ok(usuarios);
         }
     }
 }

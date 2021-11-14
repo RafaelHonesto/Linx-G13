@@ -16,7 +16,7 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// </summary>
         /// <param name="idSetor">id do setor a listar as despesas</param>
         /// <returns>Lista de despesas</returns>
-        public List<Despesa> Read(int idSetor);
+        public List<Despesa> Read(int? idSetor);
 
         /// <summary>
         /// Atualiza despesa

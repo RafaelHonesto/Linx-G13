@@ -63,7 +63,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="tipoDespesa">Objeto novoEvento que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
         // Define que somente o administrador e gestor pode acessar o método
-        [Authorize(Roles = "2, 3")]
+        [Authorize]
         [HttpPost]
         public IActionResult CriarTipoDespesa(TipoDespesa tipoDespesa)
         {

@@ -21,6 +21,12 @@
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.13.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Resources\" />
+    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\uploads\" />
+  </ItemGroup>
+
 	<PropertyGroup>
 		<GenerateDocumentationFile>true</GenerateDocumentationFile>
 		<NoWarn>$(NoWarn);1591</NoWarn>

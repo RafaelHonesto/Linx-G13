@@ -9,7 +9,7 @@
             Controller responsável pelos endpoints (URLs) referentes aos eventos
             </summary>
         </member>
-        <member name="M:BackEnd_GestaoFinanceira.Controllers.DespesaController.ListarDespesasDoSetor(System.Int32)">
+        <member name="M:BackEnd_GestaoFinanceira.Controllers.DespesaController.ListarDespesasDoSetor">
             <summary>
             Lista todas as despesas
             </summary>
@@ -106,13 +106,6 @@
             Lista todos os setores
             </summary>
             <returns>Uma lista de setores e um status code 200 - Ok</returns>
-        </member>
-        <member name="M:BackEnd_GestaoFinanceira.Controllers.SetoresController.CriarSetor(BackEnd_GestaoFinanceira.Domains.Setor)">
-            <summary>
-            Cadastra um novo setor
-            </summary>
-            <param name="setor">Objeto setor que será cadastrado</param>
-            <returns>Um status code 201 - Created</returns>
         </member>
         <member name="M:BackEnd_GestaoFinanceira.Controllers.SetoresController.EditarSetor(BackEnd_GestaoFinanceira.Domains.Setor)">
             <summary>
@@ -254,7 +247,7 @@
             </summary>
             <param name="despesa">despesa a ser adicionada</param>
         </member>
-        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IDespesaRepository.Read(System.Int32)">
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.IDespesaRepository.Read(System.Nullable{System.Int32})">
             <summary>
             Lista despesas
             </summary>
@@ -497,7 +490,7 @@
             <param name="idDespesa">id da despesa a ser deletada</param>
             <returns>confirmacao de exclusao</returns>
         </member>
-        <member name="M:BackEnd_GestaoFinanceira.Repositories.DespesaRepository.Read(System.Int32)">
+        <member name="M:BackEnd_GestaoFinanceira.Repositories.DespesaRepository.Read(System.Nullable{System.Int32})">
             <summary>
             Lista despesas do setor
             </summary>
