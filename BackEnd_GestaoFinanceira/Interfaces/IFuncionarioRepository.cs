@@ -38,5 +38,7 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// <param name="idUsuario">id do usuario do funcionario a ser buscado</param>
         /// <returns>funcionario</returns>
         public Funcionario FindByUserId(int idUsuario);
+
+        public List<Funcionario> ReadBySetorId(int? idSetor);
     }
 }

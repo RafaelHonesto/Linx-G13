@@ -37,6 +37,11 @@ namespace BackEnd_GestaoFinanceira.Repositories
             return _ctx.Valores.Where(x => x.IdSetor == idSetor).ToList();
         }
 
+        public Valore SearchById(int idValor)
+        {
+            return _ctx.Valores.Find(idValor);
+        }
+
         public void Update(Valore valor)
         {
             Valore valorAntigo = _ctx.Valores.Find(valor.IdValor);

@@ -209,7 +209,8 @@ namespace BackEnd_GestaoFinanceira.Controllers
             Usuario usuarioCadastrado = _usuarioRepository.Create(usuario);
 
             funcionario.IdUsuario = usuarioCadastrado.IdUsuario;
-            funcionario.IdSetor = Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value);
+            Funcionario funcionarioCadastrado = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
+            funcionario.IdSetor = funcionarioCadastrado.IdSetor;
 
             _funcionarioRepository.Create(funcionario);
 
@@ -254,6 +255,17 @@ namespace BackEnd_GestaoFinanceira.Controllers
             }
         }
 
+        [Authorize]
+        [HttpGet("Setor")]
+        public IActionResult ListarUsuarioIdSetor()
+        {
+            Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
+
+            List<Funcionario> Funcionarios = _funcionarioRepository.ReadBySetorId(funcionario.IdSetor);
+
+            return StatusCode(200, Funcionarios);
+        }
+
 
         /// <summary>
         /// Gestor deleta um usuário existente
@@ -279,6 +291,14 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _usuarioRepository.Delete(idUsuario);
 
             return StatusCode(200, "funcionario deletado");
+        }
+
+        [HttpGet("Buscar")]
+        public IActionResult BuscarPorId(int idUsuario)
+        {
+            Usuario usuario = _usuarioRepository.FindByUserId(idUsuario);
+
+            return StatusCode(200, usuario);
         }
 
         [HttpGet]

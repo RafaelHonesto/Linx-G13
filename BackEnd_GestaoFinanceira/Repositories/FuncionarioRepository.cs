@@ -1,6 +1,7 @@
 ﻿using BackEnd_GestaoFinanceira.Contexts;
 using BackEnd_GestaoFinanceira.Domains;
 using BackEnd_GestaoFinanceira.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,6 +36,11 @@ namespace BackEnd_GestaoFinanceira.Repositories
         public List<Funcionario> Read()
         {
             return _ctx.Funcionarios.ToList();
+        }
+
+        public List<Funcionario> ReadBySetorId(int? idSetor)
+        {
+            return _ctx.Funcionarios.Include(x => x.IdUsuarioNavigation).Where(x => x.IdSetor == idSetor).ToList();
         }
 
         public void Update(Funcionario funcionario)

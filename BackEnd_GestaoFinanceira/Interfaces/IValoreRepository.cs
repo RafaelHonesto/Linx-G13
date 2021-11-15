@@ -38,5 +38,7 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// <param name="idSetor">id do setor</param>
         /// <returns>Lista de valores</returns>
         public List<Valore> ReadBySetorId(int? idSetor);
+
+        public Valore SearchById(int idValor);
     }
 }

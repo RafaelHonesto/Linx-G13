@@ -87,5 +87,47 @@ namespace BackEnd_GestaoFinanceira.Controllers
 
             return StatusCode(200, "Valor criado");
         }
+
+        public IActionResult EditarValor(Valore valor)
+        {
+            Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
+
+            Valore valorBuscado = _valoreRepository.SearchById(valor.IdValor);
+
+            if (valorBuscado == null)
+            {
+                return StatusCode(404, "Valor nao encontrado");
+            }
+
+            if (valorBuscado.IdSetor != funcionario.IdSetor)
+            {
+                return StatusCode(401, "Usuario nao pode alterar valores no setor");
+            }
+
+            _valoreRepository.Update(valor);
+
+            return StatusCode(200, "Valor atualizado");
+        }
+
+        public IActionResult DeletarValor(int idValor)
+        {
+            Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
+
+            Valore valor = _valoreRepository.SearchById(idValor);
+
+            if (valor == null)
+            {
+                return StatusCode(404, "Valor nao encontrado");
+            }
+
+            if (valor.IdSetor != funcionario.IdSetor)
+            {
+                return StatusCode(401, "Usuario nao pode deletar valores no setor");
+            }
+
+            _valoreRepository.Delete(idValor);
+
+            return StatusCode(200, "Valor deletado");
+        }
     }
 }
