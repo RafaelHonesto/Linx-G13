@@ -29,8 +29,6 @@ class Login extends Component {
       if (resposta.status === 200) {
         localStorage.setItem('token-login', resposta.data.token)
 
-        console.log(parseJwt.jti)
-
         if (parseJwt().Role === '1') {
 
           this.props.history.push('/adm');
@@ -43,14 +41,19 @@ class Login extends Component {
       } 
     })
 
-    if(this.state.carregando === false){
-      Swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something went wrong!',
-        footer: '<a href="">Why do I have this issue?</a>'
+    .catch(erro => {
+      if(erro){
+        Swal.fire({
+          icon: 'error',
+          title: 'Eita...',
+          text: 'Acesso ou senha incorretos, tente novamente'
+      })
+      this.setState({
+        email: '',
+        senha: ''
       })
     }
+    })
   }
 
   funcaoMudaState = (campo) => {

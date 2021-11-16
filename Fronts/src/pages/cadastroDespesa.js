@@ -93,7 +93,7 @@ class despesas extends Component {
                         <input placeholder="Valor" type="text" name='valor' value={this.state.valor} onChange={this.funcaoMudaState} />
                         <input placeholder="Descrição (opcional)" type="text" name='descricao' value={this.state.descricao} onChange={this.funcaoMudaState} />
 
-                        <button type='submit'>Cadastrar</button>
+                        <button type='submit'>Adicionar +</button>
                     </form>
 
                     <div className="listaDespesas">

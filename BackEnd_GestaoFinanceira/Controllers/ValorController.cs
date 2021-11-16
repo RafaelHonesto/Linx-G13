@@ -88,6 +88,8 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Valor criado");
         }
 
+        [Authorize]
+        [HttpPut]
         public IActionResult EditarValor(Valore valor)
         {
             Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
@@ -109,6 +111,8 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Valor atualizado");
         }
 
+        [Authorize]
+        [HttpDelete]
         public IActionResult DeletarValor(int idValor)
         {
             Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));

@@ -1,0 +1,95 @@
+.corpoRelatorio {
+    width: 90%;
+    height: 100%;
+    right: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.selectRelatorio {
+    width: 350px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    font-family: 'Dosis';
+    padding-left: 15px;
+    outline: 0;
+    margin-top: 80px;
+}
+
+.tituloTabelaRelatorio, .linhaTabelaRelatorio  {
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'dosis';
+    font-size: 24px;
+    align-items: flex-end;
+}
+
+.linhaTabelaRelatorio h2 {
+    font-size: 20px;
+}
+
+.linhaTabelaRelatorio {
+    margin-top: 12px;
+}
+
+.subtitulosTabelaRelatorio {
+    display: flex;
+    width: 140px;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-right: 18px;
+}
+
+.subLinhaTabelaRelatorio{
+    display: flex;
+    width: 180px;
+    justify-content: space-between;
+    font-size: 18px;
+}
+
+.buttonDownRelatorio {
+    width: 250px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #421652;
+    color: white;
+    font-family: 'dosis';
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin-top: 40px;
+}
+
+.tabelaRelatorio {
+    width: 800px;
+    min-height: 300px;
+    max-height: 450px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    padding-top: 15px;
+    padding-left: 15px;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.329);
+    margin-top: 40px;
+    overflow-y: scroll;
+    flex-direction: column;
+}
+
+.tabelaRelatorio::-webkit-scrollbar {
+    width: 10px;
+}
+
+.tabelaRelatorio::-webkit-scrollbar-track {
+    background-color: #320d3f;
+    border-radius: 0 10px 10px 0;
+}
+
+.tabelaRelatorio::-webkit-scrollbar-thumb {
+    height: 80px;
+    background-color: rgb(90, 19, 138); 
+    border-radius: 0 10px 10px 0; 
+}

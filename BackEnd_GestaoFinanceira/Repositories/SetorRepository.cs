@@ -1,6 +1,7 @@
 ﻿using BackEnd_GestaoFinanceira.Contexts;
 using BackEnd_GestaoFinanceira.Domains;
 using BackEnd_GestaoFinanceira.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,7 +30,9 @@ namespace BackEnd_GestaoFinanceira.Repositories
 
         public List<Setor> Read()
         {
-            return _ctx.Setors.ToList();
+            return _ctx.Setors
+                .Include(c=> c.Funcionarios)
+                .ToList();
         }
 
         public Setor SearchById(int id)

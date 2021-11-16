@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import '../css/perfil.css';
+import '../css/valores.css';
 import '../css/despesas.css';
 import BarraLateral from '../components/barra'
 import EnfeiteTela from '../components/enfeiteTela';
@@ -22,6 +23,26 @@ class valores extends Component {
         }
     }
 
+    selecionarEntrada = (event) => {
+
+        event.preventDefault();
+
+        const button = document.getElementById('button1')
+        const button2 = document.getElementById('button2')
+        button.classList.add('mudarCor')
+        button2.classList.remove('mudarCor')
+    }
+
+    selecionarSaida = (event) => {
+
+        event.preventDefault();
+
+        const button = document.getElementById('button2')
+        const button2 = document.getElementById('button1')
+        button.classList.add('mudarCor')
+        button2.classList.remove('mudarCor')
+    }
+
     listarValores = () => {
         axios('http://localhost:5000/api/Valor', {
             headers: {
@@ -34,11 +55,11 @@ class valores extends Component {
             .catch(erro => console.log(erro))
     }
 
-    cadastrarDespesa = (event) => {
+    cadastrarValores = (event) => {
 
         event.preventDefault();
 
-        axios.post('http://localhost:5000/api/Despesa', {
+        axios.post('http://localhost:5000/api/Valor', {
             idTipoDespesa: this.state.idTipoDespesa,
             nome: this.state.nome,
             descricao: this.state.descricao,
@@ -81,19 +102,23 @@ class valores extends Component {
         return (
             <section className="bodyDespesa">
                 <section className="corpoDespesas">
-                    <form onSubmit={this.cadastrarDespesa} className="inputsDespesas">
-                        <h4>Cadastro de despesas</h4>
-                        <select name='idTipoDespesa' value={this.state.idTipoDespesa} onChange={this.funcaoMudaState} >
-                            <option>Selecione o tipo da despesa</option>
-                            <option value='1'>Energia</option>
-                            <option value='2'>Água</option>
-                            <option value='3'>Salário de funcionário</option>
-                        </select>
-                        <input placeholder="Nome" type="text" name='nome' value={this.state.nome} onChange={this.funcaoMudaState} />
-                        <input placeholder="Valor" type="text" name='valor' value={this.state.valor} onChange={this.funcaoMudaState} />
+                    <form onSubmit={this.cadastrarDespesa} className="inputsValores">
+                        <h4>Cadastro de valores</h4>
+                        <div className='buttonTipoValores'>
+                            <button onClick={this.selecionarEntrada} id='button1' className="buttonTipoValores2">Entrada</button>
+                            <button className="buttonTipoValores3" id='button2' onClick={this.selecionarSaida}>Saída</button>
+                        </div>
+                        <input placeholder="Titulo" type="text" name='nome' value={this.state.nome} onChange={this.funcaoMudaState} />
+                        <input placeholder="Valor" type="text" name='nome' value={this.state.nome} onChange={this.funcaoMudaState} />
+                        <input placeholder="CNPJ" type="text" name='valor' value={this.state.valor} onChange={this.funcaoMudaState} />
                         <input placeholder="Descrição (opcional)" type="text" name='descricao' value={this.state.descricao} onChange={this.funcaoMudaState} />
+                        <div className="contentComprovanteValores">
+                            <h4>Comprovante</h4>
+                            <input placeholder="Comprovante" type="file" id='file' name='descricao' value={this.state.descricao} onChange={this.funcaoMudaState} />
+                            <label for="file" className="inputImagemValores">Escolha uma imagem</label>
+                        </div>
 
-                        <button type='submit'>Cadastrar</button>
+                        <button type='submit' className="buttonValor">Adicionar +</button>
                     </form>
 
                     <div className="listaDespesas">

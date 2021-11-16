@@ -30,7 +30,9 @@ namespace BackEnd_GestaoFinanceira.Repositories
 
         public Funcionario FindByUserId(int idUsuario)
         {
-            return _ctx.Funcionarios.FirstOrDefault(c=> c.IdUsuario == idUsuario);
+            return _ctx.Funcionarios
+                .Include(c=> c.IdSetorNavigation)
+                .FirstOrDefault(c=> c.IdUsuario == idUsuario);
         }
 
         public List<Funcionario> Read()

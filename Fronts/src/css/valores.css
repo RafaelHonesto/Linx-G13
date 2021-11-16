@@ -1,0 +1,94 @@
+.buttonTipoValores {
+    display: flex;
+    width: 82%;
+    justify-content: space-between;
+}
+
+.buttonTipoValores2, .buttonTipoValores3{
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    background-color: #fff;
+    color: rgba(0, 0, 0, 0.582);
+    width: 180px !important;
+    height: 35px;
+    font-family: 'dosis';
+    cursor: pointer;
+}
+
+.inputsValores {
+    width: 50%;
+    height: 76%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inputsValores h4 {
+    font-family: 'dosis';
+    font-size: 30px;
+}
+
+.inputsValores input,
+.inputsValores select {
+    width: 400px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    font-family: 'Dosis';
+    padding-left: 15px;
+    outline: 0;
+}
+
+.inputsValores select {
+    width: 420px;
+    height: 40px;
+}
+
+.buttonValor {
+    width: 200px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #421652;
+    color: white;
+    font-family: 'dosis';
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin-left: 20%;
+}
+
+.mudarCor {
+    border: 2px solid #421652;
+}
+
+#file {
+    display: none;
+}
+
+.inputImagemValores {
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    font-family: 'Dosis';
+    width: 280px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.contentComprovanteValores {
+    display: flex;
+    justify-content: space-between;
+    width: 82%;
+    font-family: 'dosis';
+    
+}
+
+.contentComprovanteValores h4 {
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.733) ;
+}

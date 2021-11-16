@@ -296,9 +296,9 @@ namespace BackEnd_GestaoFinanceira.Controllers
         [HttpGet("Buscar")]
         public IActionResult BuscarPorId(int idUsuario)
         {
-            Usuario usuario = _usuarioRepository.FindByUserId(idUsuario);
+            Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
 
-            return StatusCode(200, usuario);
+            return StatusCode(200, funcionario);
         }
 
         [HttpGet]

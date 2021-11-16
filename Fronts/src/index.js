@@ -8,6 +8,7 @@ import { Switch, BrowserRouter as Router, Route } from 'react-router-dom';
 import telaAdm from './pages/telaADM';
 import telaInicio from './pages/telaInicio';
 import valores from './pages/cadastroValores';
+import relatorios from './pages/relatorios';
 
 const rotas = (
   <Router>
@@ -17,6 +18,7 @@ const rotas = (
       <Route path = "/despesas" component = {despesas}/>
       <Route path = "/adm" component = {telaAdm}/>
       <Route path = "/home" component = {telaInicio}/>
+      <Route path = "/relatorio" component = {relatorios}/>
       <Route path = "/valores" component = {valores}/>
     </Switch>
   </Router>

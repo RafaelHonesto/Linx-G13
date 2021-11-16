@@ -25,8 +25,9 @@ class telaAdm extends Component {
             cpf: '',
             setores: [],
             listaSetores: [],
-            foto: 'user.png',
-            idSetor: ""
+            idSetor: "",
+            numeroFuncionarios: ''
+
         }
 
     }
@@ -136,13 +137,15 @@ class telaAdm extends Component {
             }
         })
 
-        .then(dados => {
-            if (dados.status === 200) {
-                this.setState({ setores: dados.data.length, listaSetores : dados.data })
-            }
-        })
+            .then(dados => {
+                if (dados.status === 200) {
+                    this.setState({ setores: dados.data.length, listaSetores: dados.data, numeroFuncionarios: dados.data.funcionario })
 
-        .catch(erro => console.log(erro))
+                    console.log(dados)
+                }
+            })
+
+            .catch(erro => console.log(erro))
     }
 
     componentDidMount() {
@@ -179,16 +182,16 @@ class telaAdm extends Component {
 
                         <div className="titulo-tabela-adm">
                             <th>Nº de funcionários</th>
-                            <th>Total de entradas</th>
-                            <th>Total de saída</th>
+                            <th>Entradas</th>
+                            <th>Saídas</th>
                             <th>Gestão</th>
                         </div>
                         {
                             this.state.listaSetores.map((dados) => {
                                 return (
-                                    <tr>
+                                    <tr className='linhaTabelaAdm'>
                                         <td>{dados.nome}</td>
-                                        <td>45</td>
+                                        <td>{this.state.numeroFuncionarios}</td>
                                         <td>1</td>
                                         <td>2</td>
                                         <td>Gabriel</td>

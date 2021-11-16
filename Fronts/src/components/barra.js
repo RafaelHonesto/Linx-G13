@@ -2,62 +2,64 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import '../css/barraLateral.css'
 import { parseJwt } from "../services/auth";
-import Swal from "sweetalert2";
-
-// let items = document.getElementsByClassName('li');
-
-// items.forEach(item => item.classList.remove('active'))
-
-// items.forEach(item => { item.addEventListener('click', () => { item.classList.add('active') }) })
+import alert from '../img/alerta.gif'
 
 class BarraLateral extends Component {
 
-    constructor(props){
+    constructor(props) {
         super(props);
         this.state = {
-            logout : false
+            logout: false
         }
     }
 
-    certezaSair () {
-
-        Swal.fire({
-            title: 'Are you sure?',
-            text: "You won't be able to revert this!",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Yes, delete it!'
-          }).then((result) => {
-            if (result.isConfirmed) {
-              this.logout()
+    certezaSair() {
+        const modal = document.getElementById('modalBarra')
+        modal.classList.add('mostrar')
+        modal.addEventListener('click', (e) => {
+            if (e.target.id === "modalBarra" || e.target.id === "fechar") {
+                modal.classList.remove('mostrar')
             }
-          })
+        })
     }
 
-    logout(){
-        
-
-            //   localStorage.removeItem('token-login')
-
-            console.log(this.state.logout)
+    logout() {
+        localStorage.removeItem('token-login');
     }
 
 
 
     render() {
         return (
-            <div class="container">
-                <ul>
-                    <Link to='/home'><li className="li" >Início</li></Link>
-                    <Link to='/valores'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Valores</li></Link>
-                    <Link to='/despesas'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Despesas</li></Link>
-                    <Link to='/home'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Dashboard</li></Link>
-                    <Link to='/perfil'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Perfil</li></Link>
-                    <li onClick={this.certezaSair} className="li">Sair</li>
-                </ul>
-            </div>
+            <section>
+
+                <div class="container">
+                    <ul>
+                        <Link to='/home'><li className="li" >Início</li></Link>
+                        <Link to='/valores'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Valores</li></Link>
+                        <Link to='/despesas'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Despesas</li></Link>
+                        <Link to='/home'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Dashboard</li></Link>
+                        <Link to='/relatorio'><li className="li" hidden={parseJwt().Role !== '1' ? true : false}>Relatórios</li></Link>
+                        <Link to='/perfil'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Perfil</li></Link>
+                        <li onClick={this.certezaSair} className="li">Sair</li>
+                    </ul>
+                </div>
+
+                <section id="modalBarra" className="modal">
+                    <div className="modal-containerSair">
+                        <div className="content-modalSair">
+                            <img src={alert} alt='simbolo de alerta'/>
+                            <h4>Você realmente deseja sair?</h4>
+                            <div className='buttonsSair'>
+                                <Link to='/'><button onClick={this.logout} className='botaoSair'>Sim, sair</button></Link>
+                                <button id='fechar' className='botaoCancela'>Não</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </section>
+
+
         )
     }
 }

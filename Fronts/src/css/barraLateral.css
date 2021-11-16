@@ -3,6 +3,94 @@
   left: 0;
 }
 
+.content-modalSair {
+  width:100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.content-modalSair img {
+  width: 200px;
+}
+
+.mostrar{
+  display: flex;
+  position: absolute !important;
+  left: 0;
+}
+
+.botaoSair {
+  width: 70px;
+  height: 30px;
+  background-color: #421652;
+  font-family: 'dosis';
+  border: none;
+  border-radius: 5px;
+  outline: 0;
+  cursor: pointer;
+  color: #fff;
+}
+
+.botaoCancela {
+  width: 70px;
+  height: 30px;
+  background-color: #f23427;
+  font-family: 'dosis';
+  border: none;
+  border-radius: 5px;
+  outline: 0;
+  cursor: pointer;
+  color: #fff;
+}
+
+.buttonsSair {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.fadeInDown {
+  -webkit-animation-name: fadeInDown;
+  animation-name: fadeInDown;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+@keyframes fadeInDown {
+  0% {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+  }
+  100% {
+      opacity: 1;
+      -webkit-transform: none;
+      transform: none;
+  }
+}
+
+.modal-containerSair {
+  width: 450px;
+  height: 300px;
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.329);
+  flex-direction: column;
+  animation: fadeInDown .4s;
+}
+
+.content-modalSair h4{
+  font-family: 'dosis';
+  font-size: 20px;
+}
+
 ul {
   background: #421652;
   padding: 20px 0 10px 10px;

@@ -37,6 +37,7 @@ CREATE TABLE TipoDespesa (
 	Titulo				VARCHAR (20)
 );
 
+
 CREATE TABLE Despesa (
 	IdTipoDespesa		INT FOREIGN KEY REFERENCES TipoDespesa (IdTipoDespesa),
 	IdDespesa			INT PRIMARY KEY IDENTITY,
@@ -45,6 +46,9 @@ CREATE TABLE Despesa (
 	Nome				VARCHAR (80),
 	Descricao			VARCHAR (200)
 );
+
+ALTER TABLE Despesa
+ADD Valor VARCHAR (20)
 
 CREATE TABLE Empresa (
 	IdEmpresa		INT PRIMARY KEY IDENTITY,
@@ -56,6 +60,7 @@ CREATE TABLE Valores (
 	TipoEntrada			BIT,
 	IdValor				INT PRIMARY KEY IDENTITY,
 	IdSetor				INT FOREIGN KEY REFERENCES Setor (IdSetor),
+	Titulo				VARCHAR(20),
 	Valor				VARCHAR (20),
 	DataValor			DATE,
 	Foto				VARCHAR(150) DEFAULT ('default.png'),
@@ -67,3 +72,16 @@ CREATE TABLE Valores (
 CREATE TABLE Perdas (
 	IdValor			INT FOREIGN KEY REFERENCES Valores (IdValor)
 )
+
+INSERT INTO TipoUsuario (Titulo) 
+VALUES  ('ADM'),
+		('GESTOR'),
+		('FUNCIONARIO')
+
+INSERT INTO Usuario (Acesso, SenhaDeAcesso, IdTipoUsuario)
+VALUES		('adm@123', 'adm123', 1)
+
+DELETE FROM Usuario WHERE IdUsuario=1
+
+INSERT INTO Empresa (IdSetor, CNPJ, NomeEmpresa)
+VALUES		(1, '55345123000157', 'InfoTec')
