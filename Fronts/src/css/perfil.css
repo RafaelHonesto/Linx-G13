@@ -1,0 +1,226 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+.corpoPerfil {
+    width: 95%;
+    height: 100%;
+    right: 0;
+    position: absolute;
+}
+
+.contentFotoPerfil {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+.contentNomePerfil {
+    width: 100%;
+    height: 40%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+.contentModaisPerfil {
+    width: 100%;
+    height: 20%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.fotoPerfil {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+}
+
+.FotoPerfil {
+    width: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.FotoPerfil2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.NomePerfil {
+    width: 90%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'dosis';
+    font-size: 23px;
+}
+
+.modalPerfil {
+    width: 90%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: 'dosis';
+    font-size: 23px;
+}
+
+.modal{
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    background-color: #44444421;
+}
+
+
+.modal-container {
+    width: 800px;
+    height: 400px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.329);
+    overflow-y: scroll;
+}
+.modal-container2 {
+    width: 800px;
+    height: 400px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.329);
+}
+
+
+
+.imagemEnfeiteModal {
+    height: 100%;
+}
+
+.content-modal input, .content-modal select {
+    width: 350px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    font-family: 'Dosis';
+    padding-left: 15px;
+    outline: 0;
+}
+
+.content-modal select {
+    width: 370px;
+}
+
+.content-modal {
+    width:80%;
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.content-modal2 {
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inputsPerfil {
+    width: 100%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+
+
+.area-perfil {
+    width: 60%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 50px;
+}
+
+.button-foto, .button-foto2 {
+    width: 250px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #421652;
+    color: white;
+    font-family: 'dosis';
+    font-size: 18px;
+    border: none;
+}
+
+.button-foto{
+    margin-top: -100px;
+}
+
+.mostrar{
+    display: flex;
+}
+
+.modalPerfil button {
+    background-color:transparent;
+    width: 28%;
+    border: none;
+    outline: 0;
+    margin-left: -8px;
+    text-align: left;
+    font-family: 'dosis';
+    font-size: 23px;
+    cursor: pointer;
+}
+
+.tabela-perfil th {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 26px;
+    margin-bottom: 30px;
+}
+
+
+.tabela-perfil tr {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.tabela-perfil tr button {
+    width: 70px;
+    height: 25px;
+    background-color: #421652;
+    font-family: 'dosis';
+    font-size: 16px;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.tabela-perfil {
+    width: 90%;
+    font-family: 'dosis';
+}

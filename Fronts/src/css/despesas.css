@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+.bodyDespesa {
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    position: absolute;
+}
+
+.corpoDespesas {
+    width: 70%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    margin-left: -10%;
+    justify-content: space-evenly;
+}
+
+.inputsDespesas {
+    width: 50%;
+    height: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.inputsDespesas h4 {
+    font-family: 'dosis';
+    font-size: 30px;
+}
+
+.inputsDespesas input,
+.inputsDespesas select {
+    width: 400px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    font-family: 'Dosis';
+    padding-left: 15px;
+    outline: 0;
+}
+
+.inputsDespesas select {
+    width: 420px;
+    height: 40px;
+}
+
+.listaDespesas {
+    max-height: 400px;
+    padding: 20px;
+    width: 550px;
+    border-radius: 10px;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    overflow-y: scroll;
+}
+
+.tabela-despesas {
+    font-family: 'dosis';
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.tabela-despesas th {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 22px;
+    margin-bottom: 30px;
+}
+
+.trDespesa {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.listaDespesas::-webkit-scrollbar {
+    width: 10px;
+}
+
+.listaDespesas::-webkit-scrollbar-track {
+    background-color: #320d3f;
+    border-radius: 0 10px 10px 0;
+}
+
+.listaDespesas::-webkit-scrollbar-thumb {
+    height: 80px;
+    background-color: rgb(90, 19, 138);
+    border-radius: 0 10px 10px 0;
+}
+
+.container {
+    position: fixed;
+    left: 0;
+}
+
+.tituloDespesas {
+    width: 84%;
+    display: flex;
+}
+
+.trDespesa button {
+    width: 70px;
+    height: 25px;
+    background-color: #421652;
+    font-family: 'dosis';
+    font-size: 16px;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.inputsDespesas button {
+    width: 200px;
+    height: 35px;
+    border-radius: 8px;
+    background-color: #421652;
+    color: white;
+    font-family: 'dosis';
+    font-size: 18px;
+    border: none;
+    cursor: pointer;
+    margin-left: 20%;
+}

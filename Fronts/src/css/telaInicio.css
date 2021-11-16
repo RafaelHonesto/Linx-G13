@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+.content-despesas {
+    width: 450px;
+    height: 200px;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    border-radius: 8px;
+}
+
+.content-despesas2 {
+    width: 450px;
+    height: 300px;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    border-radius: 8px;
+}
+
+.content-despesas3 {
+    width: 300px;
+    height: 200px;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    border-radius: 8px;
+}
+
+.content-despesas4 {
+    width: 250px;
+    height: 90px;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    border-radius: 8px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+} 
+
+.content-despesas4 p{
+    font-size: 30px;
+    font-family: 'dosis';
+    margin-bottom: 15px;
+}
+
+.p-entradas {
+    color: #04AD6A;
+}
+
+.p-saidas {
+    color: red;
+}
+
+.corpoInicial {
+    width: 85%;
+    height: 90%;
+    right: 0;
+    position: absolute;
+    top: 50px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.esquerdo {
+    height: 90vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.direito {
+    height: 77vh;
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 13vh;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.titulo-inicio {
+    display: flex;
+    flex-direction: column;
+    font-family: 'dosis';
+    font-size: 22px;
+}
+
+.container-fluxo {
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-tabela-despesas {
+    display: flex;
+    font-family: 'dosis';
+    width: 95%;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.content-tabela-despesas2 {
+    display: flex;
+    font-family: 'dosis';
+    width: 97%;
+    margin-left: 2%;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 5px;
+}
+
+.tabela-inicio{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 15px;
+    overflow-y: scroll;
+    height: 100%;
+}
+
+.vazioDespesas {
+    font-family: 'dosis';
+    font-size: 20px;
+    margin-top: 8%;
+}
+
+.vazioValores {
+    font-family: 'dosis';
+    font-size: 20px;
+    margin-top: 22%;
+}
+
+.buttonValoresVazio {
+    width: 160px;
+    height: 30px;
+    background-color: #421652;
+    font-family: 'dosis';
+    font-size: 18px;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin-top: 30px;
+}
+
+.content-tabela-despesas2 td:nth-child(1) {
+    width: 180px;
+}
+
+.content-tabela-despesas h4{
+    font-size: 22px;
+}
+
+.content-tabela-despesas h5{
+    font-size: 16px;
+}
+
+.tabela-inicio::-webkit-scrollbar {
+    width: 10px;
+}
+
+.tabela-inicio::-webkit-scrollbar-track {
+    background-color: #320d3f;
+    border-radius: 0 10px 10px 0;
+}
+
+.tabela-inicio::-webkit-scrollbar-thumb {
+    height: 80px;
+    background-color: rgb(90, 19, 138); 
+    border-radius: 0 10px 10px 0; 
+}
+
+.fluxo-tabela h4 {
+    margin-right: 60px;
+}
+
+.titulo-entradas {
+    display: flex;
+    font-family: 'dosis';
+    font-size: 18px;
+    width: 100%;
+    justify-content: space-between;
+}

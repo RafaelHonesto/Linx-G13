@@ -1,0 +1,82 @@
+/* login */
+
+@import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
+
+*{
+    margin: 0;
+}
+
+.telaToda {
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #E5E5E5;
+}
+
+.swal2-popup {
+    font-family: 'Dosis' !important;
+}
+
+.imagemEnfeiteLogin {
+    width: 35%;
+}
+
+.content-login {
+    width: 450px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 10%;
+    margin-top: 8%;
+}
+
+.content-login input {
+    width: 400px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    font-family: 'Dosis';
+    padding-left: 15px;
+    outline: 0;
+}
+
+.content-login h1 {
+    font-family: 'dosis';
+    font-size: 30px;
+}
+
+.content-login p {
+    font-family: 'dosis';
+    font-size: 16px;
+    text-align: center;
+}
+
+.content-login button {
+    width: 130px;
+    height: 35px;
+    background-color: #421652;
+    font-family: 'dosis';
+    color: #E5E5E5;
+    font-size: 16px;
+    border-radius: 8px;
+    outline: 0;
+    border: 0;
+    cursor: pointer;
+}
+
+.imagemEnfeiteLogin2 {
+    width: 100%;
+}
+
+.container-login {
+    width: 100%;
+    display: flex;
+    position: absolute;
+    bottom: 0;
+    justify-content: space-between;
+}
