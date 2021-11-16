@@ -20,12 +20,31 @@ class telaInicio extends Component {
         this.state = {
             listaDespesas: [],
             listaValores: [],
-            listaSoValores : [],
-            nomeFuncionario : [],
-            nomeSetor : [],
-            vazio : false,
-            vazio2 : false
+            totalValorEntrada: 0,
+            nomeFuncionario: [],
+            totalValorSaida:0,
+            nomeSetor: [],
+            vazio: false,
+            vazio2: false
         }
+    }
+
+    somarValor = () => {
+
+        let numSaida = 0;
+        let numEntrada = 0
+        this.state.listaValores.forEach(element => {
+            if (element.tipoEntrada) {
+                numEntrada += parseInt(element.valor)
+
+            } else (
+                numSaida += parseInt(element.valor)
+            )
+
+        });
+
+        this.setState({ totalValorEntrada: numEntrada })
+        this.setState({ totalValorSaida: numSaida })
     }
 
     abreModal2 = () => {
@@ -45,15 +64,15 @@ class telaInicio extends Component {
             }
         })
 
-        .then(response => {
-            if(response.status === 200){
-                this.setState({ listaDespesas: response.data})
-                
-                if(response.data.length === 0){
-                    this.setState({vazio2 : true})
+            .then(response => {
+                if (response.status === 200) {
+                    this.setState({ listaDespesas: response.data })
+
+                    if (response.data.length === 0) {
+                        this.setState({ vazio2: true })
+                    }
                 }
-            }
-        })
+            })
 
             .catch(erro => console.log(erro))
     }
@@ -66,11 +85,15 @@ class telaInicio extends Component {
         })
 
             .then(response => {
-                if(response.status === 200){
-                    this.setState({ listaValores: response.data, listaSoValores:response.data})
-                    
-                    if(response.data.length === 0){
-                        this.setState({vazio : true})
+                if (response.status === 200) {
+                    this.setState({ listaValores: response.data, listaSoValores: response.data })
+
+                    this.somarValor();
+
+                    console.log(response.data)
+
+                    if (response.data.length === 0) {
+                        this.setState({ vazio: true })
                     }
                 }
             })
@@ -79,20 +102,20 @@ class telaInicio extends Component {
 
     }
 
-    buscarUsuario () {
-        axios('http://localhost:5000/api/Usuario/Buscar',{
+    buscarUsuario() {
+        axios('http://localhost:5000/api/Usuario/Buscar', {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token-login')
             }
         })
 
-        .then(response => this.setState({nomeFuncionario: response.data.nome, nomeSetor: response.data.idSetorNavigation.nome}))
+            .then(response => this.setState({ nomeFuncionario: response.data.nome, nomeSetor: response.data.idSetorNavigation.nome }))
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.listarDespesas();
-        this.listarValores(); 
-        this.buscarUsuario();    
+        this.listarValores();
+        this.buscarUsuario();
     }
 
     render() {
@@ -115,8 +138,8 @@ class telaInicio extends Component {
                                     <h5>Valores</h5>
                                 </div>
 
-                                <td className="vazioDespesas" hidden={this.state.vazio2 === true? false : true}>Não há nenhuma despesa cadastrada nesse setor</td>
-                                <Link to ='/despesas'> <button className="buttonValoresVazio" hidden={this.state.vazio === true? false : true}>Cadastrar despesas +</button> </Link>
+                                <td className="vazioDespesas" hidden={this.state.vazio2 === true ? false : true}>Não há nenhuma despesa cadastrada nesse setor</td>
+                                <Link to='/despesas'> <button className="buttonValoresVazio" hidden={this.state.vazio === true ? false : true}>Cadastrar despesas +</button> </Link>
 
                                 {
                                     this.state.listaDespesas.map((dados) => {
@@ -143,15 +166,15 @@ class telaInicio extends Component {
                                     <h5>Valores</h5>
                                 </div>
 
-                                <td className="vazioValores" hidden={this.state.vazio === true? false : true}>Não há nenhum valor cadastrado nesse setor</td>
-                                <Link to ='/valores'> <button className="buttonValoresVazio" hidden={this.state.vazio === true? false : true}>Cadastrar valores +</button> </Link>
+                                <td className="vazioValores" hidden={this.state.vazio === true ? false : true}>Não há nenhum valor cadastrado nesse setor</td>
+                                <Link to='/valores'> <button className="buttonValoresVazio" hidden={this.state.vazio === true ? false : true}>Cadastrar valores +</button> </Link>
 
                                 {
                                     this.state.listaValores.map((dados) => {
                                         return (
 
                                             <div className='content-tabela-despesas2 '>
-                                                <td>{dados.descricao}</td>
+                                                <td>{dados.titulo}</td>
                                                 <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(dados.dataValor))}</td>
                                                 <td>{dados.valor}</td>
                                             </div>
@@ -173,7 +196,7 @@ class telaInicio extends Component {
                                     <h4>Total de entradas</h4>
                                     <h5>{dataAtual}</h5>
                                 </div>
-                                <p className='p-entradas'>R$ 4567,00</p>
+                                <p className='p-entradas'>R$ {this.state.totalValorEntrada}</p>
                             </div>
 
                             <div className='content-despesas4'>
@@ -181,7 +204,7 @@ class telaInicio extends Component {
                                     <h4>Total de saídas</h4>
                                     <h5>{dataAtual}</h5>
                                 </div>
-                                <p className='p-saidas'>R$ 4567,00</p>
+                                <p className='p-saidas'>R$ {this.state.totalValorSaida}</p>
                             </div>
 
                         </div>

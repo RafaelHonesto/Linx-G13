@@ -35,6 +35,11 @@ namespace BackEnd_GestaoFinanceira.Repositories
                 .ToList();
         }
 
+        public List<Setor> ReadId(int role)
+        {
+            return _ctx.Setors.ToList();
+        }
+
         public Setor SearchById(int id)
         {
             return _ctx.Setors.Find(id);
