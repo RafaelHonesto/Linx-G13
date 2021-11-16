@@ -23,11 +23,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
             if (objectFile.files.Length > 0)
             {
                 string path = _webHostEnvironment.WebRootPath + "\\uploads\\";
+                var extension = Path.GetExtension(objectFile.files.FileName);
+                var filePath = objectFile.Entrada + objectFile.idUsuario + extension
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
-                using (FileStream fileStream = System.IO.File.Create(path + objectFile.files.FileName))
+                using (FileStream fileStream = System.IO.File.Create(path + filePath))
                 {
                     objectFile.files.CopyTo(fileStream);
                     fileStream.Flush();
