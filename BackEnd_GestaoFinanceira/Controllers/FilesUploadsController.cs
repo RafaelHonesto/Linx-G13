@@ -24,7 +24,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             {
                 string path = _webHostEnvironment.WebRootPath + "\\uploads\\";
                 var extension = Path.GetExtension(objectFile.files.FileName);
-                var filePath = objectFile.Entrada + objectFile.idUsuario + extension
+                var filePath = objectFile.Entrada + objectFile.idUsuario + extension;
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
