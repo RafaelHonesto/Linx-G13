@@ -175,6 +175,8 @@ class telaAdm extends Component {
                         </h5>
                     </div>
 
+                    
+
                     <table className="tabela-adm">
                         <h1>
                             Setores

@@ -15,11 +15,13 @@ class valores extends Component {
         this.state = {
             listaTiposDespesa: [],
             listaValor: [],
-            idTipoDespesa: '',
-            nome: '',
+            tipoEntrada: '',
+            titulo: '',
+            idEmpresa: '',
             descricao: '',
             valor: '',
-            data: new Date()
+            data: new Date(),
+            foto: 'default.png'
         }
     }
 
@@ -60,10 +62,13 @@ class valores extends Component {
         event.preventDefault();
 
         axios.post('http://localhost:5000/api/Valor', {
-            idTipoDespesa: this.state.idTipoDespesa,
-            nome: this.state.nome,
+            tipoEntrada: this.state.tipoEntrada,
+            valor: this.state.valor,
+            dataValor: this.state.data,
+            idEmpresa: this.state.idEmpresa,
+            titulo: this.state.titulo,
             descricao: this.state.descricao,
-            dataDespesa: this.state.data
+            foto: this.state.foto
         }, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token-login')
@@ -81,7 +86,13 @@ class valores extends Component {
                 }
 
                 this.setState({
-                    nome: '', descricao: '', idTipoDespesa: '', valor: ''
+                    tipoEntrada: "",
+                    valor: "",
+                    dataValor:"",
+                    idEmpresa: "",
+                    titulo:"",
+                    descricao:"",
+                    foto: ""
                 })
 
                 this.listarDespesas();
@@ -102,19 +113,19 @@ class valores extends Component {
         return (
             <section className="bodyDespesa">
                 <section className="corpoDespesas">
-                    <form onSubmit={this.cadastrarDespesa} className="inputsValores">
+                    <form onSubmit={this.cadastrarValores} className="inputsValores">
                         <h4>Cadastro de valores</h4>
                         <div className='buttonTipoValores'>
-                            <button onClick={this.selecionarEntrada} id='button1' className="buttonTipoValores2">Entrada</button>
+                            <button onClick={this.selecionarEntrada} id='button1' className="buttonTipoValores2" >Entrada</button>
                             <button className="buttonTipoValores3" id='button2' onClick={this.selecionarSaida}>Saída</button>
                         </div>
-                        <input placeholder="Titulo" type="text" name='nome' value={this.state.nome} onChange={this.funcaoMudaState} />
-                        <input placeholder="Valor" type="text" name='nome' value={this.state.nome} onChange={this.funcaoMudaState} />
-                        <input placeholder="CNPJ" type="text" name='valor' value={this.state.valor} onChange={this.funcaoMudaState} />
+                        <input placeholder="Titulo" type="text" name='titulo' value={this.state.titulo} onChange={this.funcaoMudaState} />
+                        <input placeholder="Valor" type="text" name='valor' value={this.state.valor} onChange={this.funcaoMudaState} />
+                        <input placeholder="CNPJ" type="id" name='idEmpresa' value={this.state.idEmpresa} onChange={this.funcaoMudaState} />
                         <input placeholder="Descrição (opcional)" type="text" name='descricao' value={this.state.descricao} onChange={this.funcaoMudaState} />
                         <div className="contentComprovanteValores">
                             <h4>Comprovante</h4>
-                            <input placeholder="Comprovante" type="file" id='file' name='descricao' value={this.state.descricao} onChange={this.funcaoMudaState} />
+                            <input placeholder="Comprovante" type="file" id='file' onChange={this.funcaoMudaState} />
                             <label for="file" className="inputImagemValores">Escolha uma imagem</label>
                         </div>
 
