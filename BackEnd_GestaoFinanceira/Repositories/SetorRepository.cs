@@ -39,9 +39,9 @@ namespace BackEnd_GestaoFinanceira.Repositories
             return _ctx.Setors.ToList();
         }
 
-        public Setor SearchById(int id)
+        public Setor SearchById(int? id)
         {
-            return _ctx.Setors.Find(id);
+            return _ctx.Setors.Include(x => x.Despesas).Include(x => x.Valores).FirstOrDefault(x => x.IdSetor == id);
         }
 
         public Setor BuscarNome(string nome)

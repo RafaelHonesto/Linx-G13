@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj": {}
+    "C:\\Users\\User\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj": {
+    "C:\\Users\\User\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
+        "projectUniqueName": "C:\\Users\\User\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
         "projectName": "BackEnd_GestaoFinanceira",
-        "projectPath": "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
-        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\obj\\",
+        "projectPath": "C:\\Users\\User\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
+        "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\User\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -95,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -368,7 +368,7 @@
             </summary>
             <param name="id">setor a ser deletado</param>
         </member>
-        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ISetorRepository.SearchById(System.Int32)">
+        <member name="M:BackEnd_GestaoFinanceira.Interfaces.ISetorRepository.SearchById(System.Nullable{System.Int32})">
             <summary>
             Busca setor pelo id
             </summary>

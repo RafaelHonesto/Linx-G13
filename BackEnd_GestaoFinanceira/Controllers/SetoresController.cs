@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
+using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -33,6 +34,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// Objeto _setorRepository que irá receber todos os métodos definidos na interface ISetorRepository
         /// </summary>
         private ISetorRepository _setorRepository { get; set; }
+        private IFuncionarioRepository _funcionarioRepository { get; set; }
 
         /// <summary>
         /// Instancia o objeto _setorRepository para que haja a referência aos métodos no repositório
@@ -40,6 +42,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         public SetoresController()
         {
             _setorRepository = new SetorRepository();
+            _funcionarioRepository = new FuncionarioRepository();
         }
 
 
@@ -125,6 +128,16 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _setorRepository.Delete(idSetor);
 
             return StatusCode(200, "Setor deletado");
+        }
+
+        [HttpGet("IdSetor")]
+        public IActionResult BuscarSetor()
+        {
+            Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
+
+            Setor setor = _setorRepository.SearchById(funcionario.IdSetor);
+
+            return StatusCode(200, setor);
         }
     }
 }
