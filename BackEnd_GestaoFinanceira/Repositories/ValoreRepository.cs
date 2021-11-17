@@ -1,6 +1,7 @@
 ﻿using BackEnd_GestaoFinanceira.Contexts;
 using BackEnd_GestaoFinanceira.Domains;
 using BackEnd_GestaoFinanceira.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -29,12 +30,16 @@ namespace BackEnd_GestaoFinanceira.Repositories
 
         public List<Valore> Read()
         {
-            return _ctx.Valores.ToList();
+            return _ctx.Valores
+                .Include(c=> c.IdEmpresaNavigation)
+                .ToList();
         }
 
         public List<Valore> ReadBySetorId(int? idSetor)
         {
-            return _ctx.Valores.Where(x => x.IdSetor == idSetor).ToList();
+            return _ctx.Valores.Where(x => x.IdSetor == idSetor)
+                .Include(c => c.IdEmpresaNavigation)
+                .ToList();
         }
 
         public Valore SearchById(int idValor)

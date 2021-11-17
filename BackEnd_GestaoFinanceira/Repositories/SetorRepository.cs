@@ -31,7 +31,6 @@ namespace BackEnd_GestaoFinanceira.Repositories
         public List<Setor> Read()
         {
             return _ctx.Setors
-                .Include(c=> c.Funcionarios)
                 .ToList();
         }
 

@@ -82,9 +82,17 @@
     font-size: 22px;
 }
 
+#verdeTexto {
+    color: #04AD6A;
+}
+
+#vermelhoTexto {
+    color: red;
+}
+
 .container-fluxo {
     width: 100%;
-    height: 50%;
+    height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -99,7 +107,7 @@
     align-items: flex-end;
 }
 
-.content-tabela-despesas2 {
+.content-tabela-despesas2, .content-tabela-despesas3 {
     display: flex;
     font-family: 'dosis';
     width: 97%;
@@ -145,9 +153,13 @@
     margin-top: 30px;
 }
 
-.content-tabela-despesas2 td:nth-child(1) {
-    width: 180px;
+.content-tabela-despesas2 td:nth-child(1), .content-tabela-despesas3 td:nth-child(1) {
+    width: 150px;
 }
+
+/* .content-tabela-despesas2 td:nth-child(3) {
+    width: 70px;
+} */
 
 .content-tabela-despesas h4{
     font-size: 22px;

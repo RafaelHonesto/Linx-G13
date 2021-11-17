@@ -2,7 +2,7 @@ import { Component } from "react";
 import { Link } from "react-router-dom";
 import '../css/barraLateral.css'
 import { parseJwt } from "../services/auth";
-import alert from '../img/alerta.gif'
+import alerta from '../img/alerta.gif'
 
 class BarraLateral extends Component {
 
@@ -35,7 +35,8 @@ class BarraLateral extends Component {
 
                 <div class="container">
                     <ul>
-                        <Link to='/home'><li className="li" >Início</li></Link>
+                        <Link to='/home'><li hidden={parseJwt().Role === '1' ? true : false} className="li" >Início</li></Link>
+                        <Link to='/adm'><li className="li" hidden={parseJwt().Role === '1' ? false : true}>Início</li></Link>
                         <Link to='/valores'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Valores</li></Link>
                         <Link to='/despesas'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Despesas</li></Link>
                         <Link to='/home'><li className="li" hidden={parseJwt().Role === '1' ? true : false}>Dashboard</li></Link>
@@ -48,7 +49,7 @@ class BarraLateral extends Component {
                 <section id="modalBarra" className="modal">
                     <div className="modal-containerSair">
                         <div className="content-modalSair">
-                            <img src={alert} alt='simbolo de alerta'/>
+                            <img src={alerta} className='modalSairImagem' alt='simbolo de alerta'/>
                             <h4>Você realmente deseja sair?</h4>
                             <div className='buttonsSair'>
                                 <Link to='/'><button onClick={this.logout} className='botaoSair'>Sim, sair</button></Link>

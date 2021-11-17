@@ -1,32 +1,97 @@
 import { Component } from "react";
 import '../css/relatorio.css'
-import EnfeiteTelas from '../components/enfeiteTela';
 import BarraLateral from '../components/barra'
+import axios from "axios";
 
 class relatorios extends Component {
 
     constructor(props) {
         super(props);
         this.state = {
-            logout: false
+            nomeSetor: '',
+            nomeSetores: '',
+            listaSetores: []
         }
     }
 
+    buscarSetor2 = async () => {
 
+        await axios(`http://localhost:5000/api/Setores/buscar/${this.state.nomeSetores}`, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token-login')
+            }
+        })
+
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    this.setState({
+                        nomeSetores: resposta.data.nome
+                    })
+                }
+            })
+
+            .catch(erro => console.log(erro))
+
+        console.log(this.state.nomeSetor)
+    }
+
+    listarSetores = () => {
+        axios(`http://localhost:5000/api/Setores`, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token-login')
+            }
+        })
+
+            .then(resposta => this.setState({ listaSetores: resposta.data }))
+
+            .catch(erro => console.log(erro))
+    }
+
+    buscarSetor = async () => {
+
+        await axios(`http://localhost:5000/api/Setores/buscar/${this.state.nomeSetor}`, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token-login')
+            }
+        })
+
+            .then(resposta => {
+                if (resposta.status === 200) {
+                    this.setState({
+                        idSetor: resposta.data.idSetor
+                    })
+                }
+
+                if (this.state.idSetor !== "") {
+                    this.cadastrarUsuario();
+                }
+            })
+
+            .catch(erro => console.log(erro))
+
+        console.log(this.state.nomeSetor)
+    }
+
+    componentDidMount(){
+        this.listarSetores();
+    }
 
 
     render() {
         return (
-            <section>
+            <section className='body'>
 
                 <section className="corpoRelatorio">
                     <div>
                         <select className="selectRelatorio">
-                            <option>Teste</option>
-                            <option>Teste</option>
-                            <option>Teste</option>
-                            <option>Teste</option>
-                            <option>Teste</option>
+                        <option>Selecione um setor</option>
+                            {
+                                this.state.listaSetores.map((dados) => {
+                                    return (
+                                        <option value={dados.idSetor}>{dados.nome}</option>
+                                    )
+                                })
+                            }
                         </select>
 
                         <table className="tabelaRelatorio">
@@ -57,8 +122,6 @@ class relatorios extends Component {
                         <button className='buttonDownRelatorio'>Fazer dowload do relatório</button>
                     </div>
                 </section>
-
-                <EnfeiteTelas />
 
                 <BarraLateral />
 

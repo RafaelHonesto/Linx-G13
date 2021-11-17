@@ -12,7 +12,7 @@
   justify-content: space-evenly;
 }
 
-.content-modalSair img {
+.modalSairImagem {
   width: 200px;
 }
 
@@ -23,7 +23,7 @@
 }
 
 .botaoSair {
-  width: 70px;
+  width: 100px;
   height: 30px;
   background-color: #421652;
   font-family: 'dosis';
@@ -89,6 +89,11 @@
 .content-modalSair h4{
   font-family: 'dosis';
   font-size: 20px;
+}
+
+.content-modalSair h3{
+  font-family: 'dosis';
+  font-size: 16px;
 }
 
 ul {

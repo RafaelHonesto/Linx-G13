@@ -4,7 +4,6 @@ import fotoPerfil from '../img/fotoPerfil.png'
 import enfeiteModal from '../img/enfeiteModal.png'
 
 import BarraLateral from '../components/barra'
-import EnfeiteTela from '../components/enfeiteTela';
 import axios from "axios";
 import { parseJwt } from "../services/auth";
 import Swal from "sweetalert2";
@@ -145,7 +144,7 @@ class perfil extends Component {
 
     render() {
         return (
-            <section>
+            <section className='body'>
                 <section className="corpoPerfil">
                     <div className="contentFotoPerfil">
                         <div className="FotoPerfil">
@@ -168,8 +167,6 @@ class perfil extends Component {
                 </section>
 
                 <BarraLateral />
-
-                <EnfeiteTela />
 
                 <section id="modal2" className="modal">
                     <div className="modal-container">

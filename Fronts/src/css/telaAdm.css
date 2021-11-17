@@ -1,5 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Dosis&display=swap');
 
+.body {
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+    position: absolute;
+    
+    background-image: url('../img/efeiteTelas.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+}
+
 .corpoAdm{
     width: 90%;
     min-height: 90%;
@@ -45,6 +58,10 @@
 .titulo-tabela-adm th:nth-child(3){
     margin-right: 35px;
     margin-left: -20px;
+}
+
+.imagemSair {
+    width: 100px;
 }
 
 .tabela-adm button, .inputsPerfil button {
@@ -114,6 +131,57 @@
     border-radius: 0 10px 10px 0; 
 }
 
+.modal-containerAdm2{
+    width: 680px;
+    height: 350px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.329);
+    animation: fadeInDown .4s;
+}
+
+.content-modalAdm {
+    width:95%;
+    height: 88%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-modalAdmPrincipal {
+    width: 80%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-modalAdm input, .content-modalAdm select, .content-modalDespesa input, .content-modalDespesa select {
+    width: 230px;
+    height: 35px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 0, 0, 0.247);
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
+    font-family: 'Dosis';
+    padding-left: 15px;
+    outline: 0;
+}
+
+.content-modalAdm select {
+    width: 250px;
+}
+
+
+.inputsValor {
+    height: 95%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 .modal-containerAdm{
     width: 550px;
     height: 400px;
@@ -122,6 +190,7 @@
     display: flex;
     align-items: center;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.329);
+    animation: fadeInDown .4s;
 }
 
 .inputsPerfil {
@@ -152,3 +221,25 @@
     width: 120px;
     text-align: center;
 }
+
+.fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  
+  @keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0);
+    }
+    100% {
+        opacity: 1;
+        -webkit-transform: none;
+        transform: none;
+    }
+  }

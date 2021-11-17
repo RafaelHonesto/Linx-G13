@@ -127,8 +127,6 @@
     animation: fadeInDown .4s;
 }
 
-
-
 .imagemEnfeiteModal {
     height: 100%;
 }
@@ -170,8 +168,6 @@
     flex-direction: column;
     justify-content: space-between;
 }
-
-
 
 .area-perfil {
     width: 60%;

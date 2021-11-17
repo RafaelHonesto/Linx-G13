@@ -5,6 +5,62 @@
     height: 100vh;
     justify-content: center;
     position: absolute;
+    background-image: url('../img/efeiteTelas.png');
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+}
+
+.content-modalDespesaPrincipal {
+    width: 90%;
+    height: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.content-modalDespesa {
+    width:95%;
+    height: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-containerDespesa{
+    width: 600px;
+    height: 250px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.329);
+    animation: fadeInDown .4s;
+}
+
+.buttonsDespesa {
+    display: flex;
+    width: 95%;
+    justify-content: space-between;
+    
+}
+
+.buttonsDespesa button {
+    width: 140px;
+    height: 25px;
+    background-color: #421652;
+    font-family: 'dosis';
+    font-size: 16px;
+    color: #fff;
+    border-radius: 4px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.buttonsDespesa button:nth-child(3){
+    background-color: #a80c0c;
 }
 
 .corpoDespesas {
@@ -46,8 +102,14 @@
     height: 40px;
 }
 
+.vazioCDespesas {
+    margin-top: 60px;
+    margin-left: 80px;
+    font-size: 18px;
+}
+
 .listaDespesas {
-    max-height: 400px;
+    height: 250px;
     padding: 20px;
     width: 550px;
     border-radius: 10px;
@@ -76,7 +138,6 @@
 .trDespesa {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     font-size: 18px;
     margin-bottom: 10px;
 }
@@ -102,8 +163,18 @@
 }
 
 .tituloDespesas {
-    width: 84%;
     display: flex;
+    width: 300px;
+    height: 100%;
+    justify-content: space-between;
+}
+
+.tituloDespesas th:nth-child(2){
+    margin-left: -24px;
+}
+
+.tituloDespesas th:nth-child(3){
+    margin-right: -23px;
 }
 
 .trDespesa button {
@@ -130,4 +201,27 @@
     border: none;
     cursor: pointer;
     margin-left: 20%;
+}
+
+.trDespesa td:nth-child(1){
+    width: 70px;
+    margin-right: 20px;
+}
+
+.trDespesa td:nth-child(2){
+    width: 100px;
+    margin-right: 20px;
+}
+
+.trDespesa td:nth-child(3){
+    width: 220px;
+    margin-right: 20px;
+}
+
+.diminuir{
+    width: 430px;
+}
+
+.tituloDespesa2 {
+    width: 285px;
 }

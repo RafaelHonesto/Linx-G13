@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import '../css/telaAdm.css';
 import enfeiteModal from '../img/enfeiteModal.png'
-import EnfeiteTelas from '../components/enfeiteTela';
 import BarraLateral from '../components/barra'
 import axios from "axios";
 import Swal from "sweetalert2";
+import alert from '../img/alertaExcluir.png'
 
 var data = new Date();
 var dia = String(data.getDate()).padStart(2, '0');
@@ -30,6 +30,30 @@ class telaAdm extends Component {
 
         }
 
+    }
+
+    deuCerto (){
+        Swal.fire({
+            icon: 'success',
+            title: 'Setor excluído',
+            showConfirmButton: false,
+            timer: 1500
+        })
+
+        const modal = document.getElementById('modal')
+        modal.classList.remove('mostrar')
+        const modal2 = document.getElementById('modalSair')
+        modal2.classList.remove('mostrar')
+    }
+
+    abreModal = () => {
+        const modal = document.getElementById('modal')
+        modal.classList.add('mostrar')
+        modal.addEventListener('click', (e) => {
+            if (e.target.id === "modal" || e.target.id === "fechar") {
+                modal.classList.remove('mostrar')
+            }
+        })
     }
 
     abreModal2 = () => {
@@ -87,6 +111,7 @@ class telaAdm extends Component {
 
     cadastrarUsuario = async (event) => {
 
+        event.preventDefault();
 
         await axios.post('http://localhost:5000/api/Usuario/Criar', {
             usuario: {
@@ -108,6 +133,10 @@ class telaAdm extends Component {
 
             .then(resposta => {
                 if (resposta.status === 201) {
+
+                    const modal = document.getElementById('modal2')
+                    modal.classList.remove('mostrar')
+
                     this.setState({
                         nome: "",
                         cpf: "",
@@ -124,6 +153,8 @@ class telaAdm extends Component {
                         showConfirmButton: false,
                         timer: 1500
                     })
+
+                    this.buscarSetor();
                 }
             })
 
@@ -148,6 +179,16 @@ class telaAdm extends Component {
             .catch(erro => console.log(erro))
     }
 
+    certezaExcluir() {
+        const modal = document.getElementById('modalSair')
+        modal.classList.add('mostrar')
+        modal.addEventListener('click', (e) => {
+            if (e.target.id === "modalSair" || e.target.id === "fechar") {
+                modal.classList.remove('mostrar')
+            }
+        })
+    }
+
     componentDidMount() {
         this.buscarSetores()
     }
@@ -159,7 +200,7 @@ class telaAdm extends Component {
 
     render() {
         return (
-            <section>
+            <section className='body'>
                 <section className="corpoAdm">
                     <div className="totalSetores">
                         <div className="totalSetores-text">
@@ -175,7 +216,7 @@ class telaAdm extends Component {
                         </h5>
                     </div>
 
-                    
+
 
                     <table className="tabela-adm">
                         <h1>
@@ -217,14 +258,57 @@ class telaAdm extends Component {
                                 <input placeholder="Nome do gestor" name='nomeGestor' value={this.state.nomeGestor} onChange={this.funcaoMudaState} type="text" />
                                 <input placeholder="CPF" name='cpf' value={this.state.cpf} onChange={this.funcaoMudaState} type="text" />
                                 <input placeholder="Acesso" name='acesso' value={this.state.acesso} onChange={this.funcaoMudaState} type="text" />
-                                <input placeholder="Senha de acesso" name='senha' value={this.state.senhar} onChange={this.funcaoMudaState} type="text" />
+                                <input placeholder="Senha de acesso" name='senha' value={this.state.senha} onChange={this.funcaoMudaState} type="password" />
                                 <button type="submit">Criar</button>
                             </form>
                         </div>
                     </div>
                 </section>
 
-                <EnfeiteTelas />
+                <section id="modal" className="modal">
+                    <div className="modal-containerAdm2">
+                        <img src={enfeiteModal} alt='enfeite modal' className="imagemEnfeiteModal" />
+                        <div className="content-modalAdmPrincipal">
+                            <div className="content-modalAdm">
+                                <div className="inputsValor">
+                                    <input placeholder="Nome do setor" name='nomeSetor' value={this.state.nomeSetor} onChange={this.funcaoMudaState} type="text" />
+                                    <input placeholder="Nome do gestor" name='nomeGestor' value={this.state.nomeGestor} onChange={this.funcaoMudaState} type="text" />
+                                    <input placeholder="CPF" name='cpf' value={this.state.cpf} onChange={this.funcaoMudaState} type="text" />
+                                    <input placeholder="Acesso" name='acesso' value={this.state.acesso} onChange={this.funcaoMudaState} type="text" />
+                                    <input placeholder="Senha de acesso" name='senha' value={this.state.senha} onChange={this.funcaoMudaState} type="password" />
+                                </div>
+                                <form className="inputsValor">
+                                    <input placeholder="Novo nome do setor" name='nomeSetor' value={this.state.nomeSetor} onChange={this.funcaoMudaState} type="text" />
+                                    <input placeholder="Novo nome do gestor" name='nomeGestor' value={this.state.nomeGestor} onChange={this.funcaoMudaState} type="text" />
+                                    <input placeholder="Novo CPF" name='cpf' value={this.state.cpf} onChange={this.funcaoMudaState} type="text" />
+                                    <input placeholder="Novo acesso" name='acesso' value={this.state.acesso} onChange={this.funcaoMudaState} type="text" />
+                                    <input placeholder="Nova senha de acesso" name='senha' value={this.state.senha} onChange={this.funcaoMudaState} type="password" />
+                                </form>
+                            </div>
+                            
+                            <div className="buttonsDespesa">
+                                <button onClick={this.certezaExcluir}>Excluir setor </button>
+                                <button>Atualizar</button>
+                                <button id='fechar'>Cancelar</button>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+
+                <section id="modalSair" className="modal">
+                    <div className="modal-containerSair">
+                        <div className="content-modalSair">
+                            <img src={alert} className='imagemSair' alt='simbolo de alerta'/>
+                            <h4>Você realmente deseja excluir?</h4>
+                            <h3>Essa ação não poderá ser desfeita.</h3>
+                            <div className='buttonsSair'>
+                                <button className='botaoSair' onClick={this.deuCerto}>Sim, excluir</button>
+                                <button id='fechar' className='botaoCancela'>Cancelar</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
 
                 <BarraLateral />
 

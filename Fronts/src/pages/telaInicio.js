@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import '../css/telaInicio.css';
 import enfeiteModal from '../img/enfeiteModal.png'
 import BarraLateral from '../components/barra'
-import EnfeiteTelas from '../components/enfeiteTela';
 import axios from "axios";
 import { Link } from "react-router-dom";
 
@@ -25,7 +24,8 @@ class telaInicio extends Component {
             totalValorSaida:0,
             nomeSetor: [],
             vazio: false,
-            vazio2: false
+            vazio2: false,
+            cor: false
         }
     }
 
@@ -67,6 +67,8 @@ class telaInicio extends Component {
             .then(response => {
                 if (response.status === 200) {
                     this.setState({ listaDespesas: response.data })
+
+                    console.log(this.state.listaDespesas)
 
                     if (response.data.length === 0) {
                         this.setState({ vazio2: true })
@@ -120,7 +122,7 @@ class telaInicio extends Component {
 
     render() {
         return (
-            <section>
+            <section className='body'>
                 <section className='corpoInicial'>
                     <div className='esquerdo'>
                         <div className='titulo-inicio'>
@@ -148,7 +150,7 @@ class telaInicio extends Component {
                                             <div className='content-tabela-despesas2 '>
                                                 <td>{dados.nome}</td>
                                                 <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(dados.dataDespesa))}</td>
-                                                <td>{dados.valor}</td>
+                                                <td id='vermelhoTexto'>R${dados.valor}</td>
                                             </div>
                                         )
                                     })
@@ -173,10 +175,10 @@ class telaInicio extends Component {
                                     this.state.listaValores.map((dados) => {
                                         return (
 
-                                            <div className='content-tabela-despesas2 '>
+                                            <div className='content-tabela-despesas3 '>
                                                 <td>{dados.titulo}</td>
                                                 <td>{new Intl.DateTimeFormat('pt-BR').format(new Date(dados.dataValor))}</td>
-                                                <td>{dados.valor}</td>
+                                                <td id={dados.tipoEntrada === true ? 'verdeTexto' : 'vermelhoTexto'}>R$ {dados.valor}</td>
                                             </div>
                                         )
                                     })
@@ -186,11 +188,16 @@ class telaInicio extends Component {
                         </div>
                     </div>
                     <div className='direito'>
-                        <div className='content-despesas3'>
-
-                        </div>
 
                         <div className='container-fluxo'>
+                            <div className='content-despesas4'>
+                                <div className='titulo-entradas'>
+                                    <h4>Lucro</h4>
+                                    <h5>{dataAtual}</h5>
+                                </div>
+                                <p className='p-entradas'>R$ {(this.state.totalValorEntrada - this.state.totalValorSaida)}</p>
+                            </div>
+
                             <div className='content-despesas4'>
                                 <div className='titulo-entradas'>
                                     <h4>Total de entradas</h4>
@@ -252,8 +259,6 @@ class telaInicio extends Component {
                         </div>
                     </div>
                 </section>
-
-                <EnfeiteTelas />
 
                 <BarraLateral />
 
