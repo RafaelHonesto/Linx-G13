@@ -14,6 +14,38 @@ class relatorios extends Component {
         }
     }
 
+    botaoBaixar() {
+        const linhaTabela = document.querySelectorAll('tr')
+        const botaoBaixar = document.getElementById('botaoBaixar')
+
+        botaoBaixar.addEventListener('click', () => {
+
+
+
+            const csv = Array.from(linhaTabela)
+                .map(row => Array.from(row.cells)
+                    .map(cell => cell.textContent)
+                    .join(',')
+                )
+                .join('\n')
+
+            console.log(csv)
+
+            botaoBaixar.setAttribute(
+                'href',
+                `data:text/csv;charset=utf-8,${encodeURIComponent(csv)}`
+            )
+
+            botaoBaixar.setAttribute(
+                'download',
+                'Relatório.csv'
+            )
+
+        })
+    }
+
+
+
     buscarSetor2 = async () => {
 
         await axios(`http://localhost:5000/api/Setores/buscar/${this.state.nomeSetores}`, {
@@ -72,8 +104,9 @@ class relatorios extends Component {
         console.log(this.state.nomeSetor)
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.listarSetores();
+        this.botaoBaixar();
     }
 
 
@@ -82,9 +115,10 @@ class relatorios extends Component {
             <section className='body'>
 
                 <section className="corpoRelatorio">
+
                     <div>
                         <select className="selectRelatorio">
-                        <option>Selecione um setor</option>
+                            <option>Selecione um setor</option>
                             {
                                 this.state.listaSetores.map((dados) => {
                                     return (
@@ -92,34 +126,87 @@ class relatorios extends Component {
                                     )
                                 })
                             }
+
                         </select>
 
                         <table className="tabelaRelatorio">
-                            <div className="tituloTabelaRelatorio">
-                                <h4>Relatório</h4>
-                                <div className='subtitulosTabelaRelatorio'>
-                                    <h5>Data</h5>
-                                    <h5>Valor</h5>
-                                </div>
-                            </div>
+                            <thead >
+                                <tr className="tituloTabelaRelatorio">
+                                    <th>Relatório</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                </tr>
 
-                            <div className="linhaTabelaRelatorio">
-                                <h2>Conta de luz</h2>
-                                <div className='subLinhaTabelaRelatorio'>
-                                    <h5>30/06/2003</h5>
-                                    <h5>R$200,00</h5>
-                                </div>
-                            </div>
-                            <div className="linhaTabelaRelatorio">
-                                <h2>Conta de luzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz</h2>
-                                <div className='subLinhaTabelaRelatorio'>
-                                    <h5>30/06/2003</h5>
-                                    <h5>R$200,00</h5>
-                                </div>
-                            </div>
+                            </thead>
+
+                            <tbody>
+                                <tr className="linhaTabelaRelatorio">
+                                    <td id='trTabela'>Água</td>
+                                    <td id='trTabela'>30/06/2003</td>
+                                    <td id='trTabela'>R$200</td>
+                                </tr>
+
+                                <tr className="linhaTabelaRelatorio">
+                                    <td id='trTabela'>Energia</td>
+                                    <td id='trTabela'>30/06/2003</td>
+                                    <td id='trTabela'>R$450</td>
+                                </tr>
+
+                                <tr className="linhaTabelaRelatorio">
+                                    <td id='trTabela'>Cadeira</td>
+                                    <td id='trTabela'>30/06/2003</td>
+                                    <td id='trTabela'>R$100</td>
+                                </tr>
+
+                                <tr className="linhaTabelaRelatorio">
+                                    <td id='trTabela'>Venda curso</td>
+                                    <td id='trTabela'>30/06/2003</td>
+                                    <td id='trTabela'>R$100</td>
+                                </tr>
+                                <tr className="linhaTabelaRelatorio">
+                                    <td id='trTabela'>Água</td>
+                                    <td id='trTabela'>30/06/2003</td>
+                                    <td id='trTabela'>R$200</td>
+                                </tr>
+
+                                <tr className="linhaTabelaRelatorio">
+                                    <td id='trTabela'>Energia</td>
+                                    <td id='trTabela'>30/06/2003</td>
+                                    <td id='trTabela'>R$450</td>
+                                </tr>
+
+                                <tr className="linhaTabelaRelatorio">
+                                    <td id='trTabela'>Cadeira</td>
+                                    <td id='trTabela'>30/06/2003</td>
+                                    <td id='trTabela'>R$100</td>
+                                </tr>
+
+                                <tr className="linhaTabelaRelatorio">
+                                    <td id='trTabela'>Venda curso</td>
+                                    <td id='trTabela'>30/06/2003</td>
+                                    <td id='trTabela'>R$100</td>
+                                </tr>
+                                <tr className="linhaTabelaRelatorio">
+                                    <td id='trTabela'>Água</td>
+                                    <td id='trTabela'>30/06/2003</td>
+                                    <td id='trTabela'>R$200</td>
+                                </tr>
+
+                                <tr className="linhaTabelaRelatorio">
+                                    <td id='trTabela'>Energia</td>
+                                    <td id='trTabela'>30/06/2003</td>
+                                    <td id='trTabela'>R$450</td>
+                                </tr>
+
+                            </tbody>
+
+
                         </table>
 
-                        <button className='buttonDownRelatorio'>Fazer dowload do relatório</button>
+                        <div className='buttonDownRelatorio'>
+                            <a role='button' id='botaoBaixar'>Fazer dowload do relatório</a>
+                        </div>
+
                     </div>
                 </section>
 

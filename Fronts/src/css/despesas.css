@@ -203,6 +203,11 @@
     margin-left: 20%;
 }
 
+.inputsDespesas button:hover{
+    background-color: #723a86;
+    transition: all ease-in 0.3s;
+}
+
 .trDespesa td:nth-child(1){
     width: 70px;
     margin-right: 20px;

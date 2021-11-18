@@ -1,6 +1,7 @@
 ﻿using BackEnd_GestaoFinanceira.Contexts;
 using BackEnd_GestaoFinanceira.Domains;
 using BackEnd_GestaoFinanceira.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,7 +52,9 @@ namespace BackEnd_GestaoFinanceira.Repositories
         /// <returns>Lista de despesas do setor</returns>
         public List<Despesa> Read(int? idSetor)
         {
-            return _ctx.Despesas.Where(x => x.IdSetor == idSetor).ToList();
+            return _ctx.Despesas.Where(x => x.IdSetor == idSetor)
+                .Include(c=> c.IdTipoDespesaNavigation)
+                .ToList();
         }
 
         public Despesa SearchById(int idDespesa)

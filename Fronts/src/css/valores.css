@@ -12,6 +12,12 @@
     justify-content: space-evenly;
 }
 
+.vazioValor {
+    margin-top: 70px;
+    margin-left: 125px;
+    font-size: 18px;
+}
+
 .content-modalValorPrincipal{
     width: 80%;
     height: 85%;
@@ -74,6 +80,11 @@
     border: none;
     cursor: pointer;
     margin-left: 20%;
+}
+
+.buttonValor:hover{
+    background-color: #723a86;
+    transition: all ease-in 0.3s;
 }
 
 .mudarCor {

@@ -22,10 +22,45 @@
 .tituloTabelaRelatorio, .linhaTabelaRelatorio  {
     width: 95%;
     display: flex;
-    justify-content: space-between;
     font-family: 'dosis';
     font-size: 24px;
     align-items: flex-end;
+}
+
+.tituloTabelaRelatorio th:nth-child(2), .tituloTabelaRelatorio th:nth-child(3){
+    font-size: 18px;
+}
+
+.linhaTabelaRelatorio td {
+    font-size: 18px;
+}
+
+.linhaTabelaRelatorio td:nth-child(1){
+    width: 60%;
+    text-align: start;
+}
+.linhaTabelaRelatorio td:nth-child(2){
+    width: 25%;
+    text-align: start;
+}
+.linhaTabelaRelatorio td:nth-child(3){
+    width: 15%;
+    text-align: start;
+}
+
+.tituloTabelaRelatorio th:nth-child(1){
+    width: 60%;
+    text-align: start;
+}
+
+.tituloTabelaRelatorio th:nth-child(2){
+    width: 25%;
+    text-align: start;
+}
+
+.tituloTabelaRelatorio th:nth-child(3){
+    width: 15%;
+    text-align: start;
 }
 
 .linhaTabelaRelatorio h2 {
@@ -62,22 +97,27 @@
     border: none;
     cursor: pointer;
     margin-top: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
 }
 
 .tabelaRelatorio {
-    width: 800px;
+    width: 700px;
     min-height: 300px;
-    max-height: 450px;
+    max-height: 400px;
     background-color: #FFFFFF;
     border-radius: 10px;
     display: flex;
-    padding-top: 15px;
-    padding-left: 15px;
+    padding: 15px 0 15px 15px;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.329);
     margin-top: 40px;
     overflow-y: scroll;
     flex-direction: column;
 }
+
+
 
 .tabelaRelatorio::-webkit-scrollbar {
     width: 10px;

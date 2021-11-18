@@ -100,8 +100,12 @@ class telaInicio extends Component {
                 }
             })
 
-            .catch(erro => console.log(erro))
-
+            .catch(erro => {
+                if(erro){
+                    this.setState({ vazio: true })
+                    console.log(erro)
+                }
+            } )
     }
 
     buscarUsuario() {

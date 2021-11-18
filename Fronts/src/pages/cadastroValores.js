@@ -22,7 +22,8 @@ class valores extends Component {
             valor: '',
             data: new Date(),
             foto: 'default.png',
-            listaEmpresa: []
+            listaEmpresa: [],
+            vazio : false
         }
     }
 
@@ -90,9 +91,22 @@ class valores extends Component {
             }
         })
 
-            .then(response => this.setState({ listaValor: response.data }))
+            .then(response => {
+                if(response){
+                    this.setState({ listaValor: response.data })
 
-            .catch(erro => console.log(erro))
+                    if (response.data.length === 0) {
+                        this.setState({ vazio: true })
+                    }
+                }
+            } )
+
+            .catch(erro => {
+                if(erro){
+                    console.log(erro)
+                    this.setState({ vazio: true })
+                }
+            } )
     }
 
     cadastrarValores = (event) => {
@@ -216,6 +230,8 @@ class valores extends Component {
                                 <th>Empresa</th>
                                 <th>Valor</th>
                             </div>
+
+                            <td className="vazioValor" hidden={this.state.vazio === true ? false : true}>Não há nenhum valor cadastrado nesse setor</td>
 
                             {
                                 this.state.listaValor.map((dados) => {

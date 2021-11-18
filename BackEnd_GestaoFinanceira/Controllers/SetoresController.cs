@@ -93,7 +93,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="setor">Objeto com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o administrador pode acessar o método
-        [Authorize(Roles = "1")]
+        [Authorize]
         [HttpPut]
         public IActionResult EditarSetor(Setor setor)
         {
@@ -116,7 +116,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="idSetor">ID do setor que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o administrador pode acessar o método
-        [Authorize(Roles = "1")]
+        [Authorize]
         [HttpDelete]
         public IActionResult DeletarSetor(int idSetor)
         {
