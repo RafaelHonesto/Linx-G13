@@ -139,5 +139,14 @@ namespace BackEnd_GestaoFinanceira.Controllers
 
             return StatusCode(200, setor);
         }
+        
+        [Authorize(Roles = "1")]
+        [HttpGet("IdSetor/{id}")]
+        public IActionResult BuscarSetor(int? id)
+        {
+            Setor setor = _setorRepository.SearchById(id);
+
+            return StatusCode(200, setor);
+        }
     }
 }
