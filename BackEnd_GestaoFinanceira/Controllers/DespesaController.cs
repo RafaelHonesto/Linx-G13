@@ -56,7 +56,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
 
             Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
 
-            List<Despesa> Despesas = _despesaRepository.Read(funcionario.IdSetor);
+            List<Despesa> Despesas = _despesaRepository.Read(funcionario?.IdSetor);
 
             return StatusCode(200, Despesas);
         }

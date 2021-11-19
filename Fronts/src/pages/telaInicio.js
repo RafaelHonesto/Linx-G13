@@ -21,7 +21,7 @@ class telaInicio extends Component {
             listaValores: [],
             totalValorEntrada: 0,
             nomeFuncionario: [],
-            totalValorSaida:0,
+            totalValorSaida: 0,
             nomeSetor: [],
             vazio: false,
             vazio2: false,
@@ -101,11 +101,12 @@ class telaInicio extends Component {
             })
 
             .catch(erro => {
-                if(erro){
+                if (erro) {
                     this.setState({ vazio: true })
                     console.log(erro)
                 }
-            } )
+            })
+        console.log(this.state.listaValores)
     }
 
     buscarUsuario() {
@@ -122,6 +123,25 @@ class telaInicio extends Component {
         this.listarDespesas();
         this.listarValores();
         this.buscarUsuario();
+        this.select();
+    }
+
+    select() {
+
+        let check = document.getElementById('caixa')
+        let texto = document.getElementById('textoPendentes')
+        let texto1 = document.getElementById('textoPendentes1')
+        let texto2 = document.getElementById('textoPendentes2')
+        let label = document.getElementById('LabelSelect')
+
+        check.addEventListener('click', () => {
+            check.classList.add('transicaoTexto')
+            label.classList.add('transicaoTexto')
+            texto.classList.add('transicaoTexto')
+            texto1.classList.add('transicaoTexto')
+            texto2.classList.add('transicaoTexto')
+        })
+
     }
 
     render() {
@@ -194,6 +214,31 @@ class telaInicio extends Component {
                     <div className='direito'>
 
                         <div className='container-fluxo'>
+                            <div className='content-despesas3'>
+                                <div className='titulo-entradas'>
+                                    <h4>Atualizar status das despesas ⚠️</h4>
+                                </div>
+
+                                <div className='contentCheckBox'>
+                                    <p id='textoPendentes'>Energia</p>
+                                    <p id='textoPendentes1'>14/05/2021</p>
+                                    <p id='textoPendentes2'>R$200</p>
+                                    <div className='checkboxPendentes'>
+                                        <label id='LabelSelect' for="caixa">Pago</label>
+                                        <input type="radio" id="caixa" name="caixa" onClick={this.select} />
+                                    </div>
+                                </div>
+                                <div className='contentCheckBox'>
+                                    <p id='textoPendentes'>Energia</p>
+                                    <p id='textoPendentes'>14/05/2021</p>
+                                    <p id='textoPendentes'>R$200</p>
+                                    <div className='checkboxPendentes'>
+                                        <label id='LabelSelect' for="caixa">Pago</label>
+                                        <input type="radio" id="caixa" name="caixa" onClick={this.select} />
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className='content-despesas4'>
                                 <div className='titulo-entradas'>
                                     <h4>Lucro</h4>

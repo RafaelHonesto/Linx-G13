@@ -73,6 +73,8 @@ CREATE TABLE Perdas (
 	IdValor			INT FOREIGN KEY REFERENCES Valores (IdValor)
 )
 
+drop table perdas
+
 INSERT INTO TipoUsuario (Titulo) 
 VALUES  ('ADM'),
 		('GESTOR'),

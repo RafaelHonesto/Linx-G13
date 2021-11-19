@@ -1,25 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\50350368805\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj": {}
+    "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj": {}
   },
   "projects": {
-    "C:\\Users\\50350368805\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj": {
+    "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\50350368805\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
+        "projectUniqueName": "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
         "projectName": "BackEnd_GestaoFinanceira",
-        "projectPath": "C:\\Users\\50350368805\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
-        "packagesPath": "C:\\Users\\50350368805\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\50350368805\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\obj\\",
+        "projectPath": "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
+        "packagesPath": "C:\\Users\\gabri\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\obj\\",
         "projectStyle": "PackageReference",
-        "fallbackFolders": [
-          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
-        ],
         "configFilePaths": [
-          "C:\\Users\\50350368805\\AppData\\Roaming\\NuGet\\NuGet.Config",
-          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Users\\gabri\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -100,7 +95,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.402\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

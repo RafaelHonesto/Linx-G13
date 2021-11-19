@@ -19,6 +19,11 @@
     margin-top: 80px;
 }
 
+.buttonDownRelatorio a{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+
 .tituloTabelaRelatorio, .linhaTabelaRelatorio  {
     width: 95%;
     display: flex;
