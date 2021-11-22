@@ -18,6 +18,8 @@ namespace BackEnd_GestaoFinanceira.Repositories
         /// <param name="usuario">usuario a ser criado</param>
         public Usuario Create(Usuario usuario)
         {
+            usuario.SenhaDeAcesso = Criptografar(usuario.SenhaDeAcesso);
+
             _ctx.Usuarios.Add(usuario);
 
             _ctx.SaveChanges();
@@ -42,13 +44,22 @@ namespace BackEnd_GestaoFinanceira.Repositories
 
         public Usuario FindByUserId(int id)
         {
-            return _ctx.Usuarios.Find(id);
+            Usuario usuario = _ctx.Usuarios.Find(id);
+
+            usuario.SenhaDeAcesso = "";
+
+            return usuario;
         }
 
         public List<Usuario> Read()
         {
             return _ctx.Usuarios
                 .Include(x => x.Funcionario) 
+                .Select(x => new Usuario() { 
+                    Acesso = x.Acesso,
+                    IdUsuario = x.IdUsuario,
+                    IdTipoUsuario = x.IdTipoUsuario
+                })
                 .ToList();
         }
 
@@ -61,7 +72,7 @@ namespace BackEnd_GestaoFinanceira.Repositories
             }
             if (usuario.SenhaDeAcesso != null)
             {
-                usuarioAntigo.SenhaDeAcesso = usuario.SenhaDeAcesso;
+                usuarioAntigo.SenhaDeAcesso = Criptografar(usuario.SenhaDeAcesso);
             }
 
             _ctx.Usuarios.Update(usuarioAntigo);
@@ -71,7 +82,12 @@ namespace BackEnd_GestaoFinanceira.Repositories
 
         public Usuario VerificarEmailESenha(Usuario usuario)
         {
-            return _ctx.Usuarios.Include(x => x.Funcionario).FirstOrDefault(x => x.Acesso == usuario.Acesso && x.SenhaDeAcesso == usuario.SenhaDeAcesso);
+            return _ctx.Usuarios.Include(x => x.Funcionario).FirstOrDefault(x => x.Acesso == usuario.Acesso && x.SenhaDeAcesso == Criptografar(usuario.SenhaDeAcesso));
+        }
+
+        private string Criptografar(string senha)
+        {
+            return BCrypt.Net.BCrypt.HashPassword(senha);
         }
     }
 }
