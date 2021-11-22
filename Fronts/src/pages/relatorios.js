@@ -6,11 +6,15 @@ import axios from "axios";
 class relatorios extends Component {
 
     constructor(props) {
+
         super(props);
         this.state = {
             nomeSetor: '',
             nomeSetores: '',
-            listaSetores: []
+            listaSetores: [],
+            despesas: [],
+            valor: [],
+            idSetor: ''
         }
     }
 
@@ -18,18 +22,17 @@ class relatorios extends Component {
         const linhaTabela = document.querySelectorAll('tr')
         const botaoBaixar = document.getElementById('botaoBaixar')
 
+
         botaoBaixar.addEventListener('click', () => {
 
-
-
-            const csv = Array.from(linhaTabela)
+            const csv = Array.from(this.state.despesas)
                 .map(row => Array.from(row.cells)
                     .map(cell => cell.textContent)
                     .join(',')
                 )
                 .join('\n')
 
-            console.log(csv)
+                console.log(csv)
 
             botaoBaixar.setAttribute(
                 'href',
@@ -44,28 +47,44 @@ class relatorios extends Component {
         })
     }
 
-
-
-    buscarSetor2 = async () => {
-
-        await axios(`http://localhost:5000/api/Setores/buscar/${this.state.nomeSetores}`, {
+    buscarSetor3 = async () => {
+        await axios('http://localhost:5000/api/Setores/IdSetor/' + 1, {
             headers: {
                 'Authorization': 'Bearer ' + localStorage.getItem('token-login')
             }
         })
 
-            .then(resposta => {
-                if (resposta.status === 200) {
-                    this.setState({
-                        nomeSetores: resposta.data.nome
-                    })
-                }
-            })
+            .then(resposta => this.setState({ despesas: resposta.data.despesas, valor: resposta.data.valores }))
 
             .catch(erro => console.log(erro))
 
-        console.log(this.state.nomeSetor)
+        console.log(this.state.despesas)
+        console.log(this.state.valor)
+
     }
+
+
+
+    // buscarSetor2 = async () => {
+
+    //     await axios(`http://localhost:5000/api/Setores/buscar/${this.state.nomeSetores}`, {
+    //         headers: {
+    //             'Authorization': 'Bearer ' + localStorage.getItem('token-login')
+    //         }
+    //     })
+
+    //         .then(resposta => {
+    //             if (resposta.status === 200) {
+    //                 this.setState({
+    //                     nomeSetores: resposta.data.nome
+    //                 })
+    //             }
+    //         })
+
+    //         .catch(erro => console.log(erro))
+
+    //     console.log(this.state.nomeSetor)
+    // }
 
     listarSetores = () => {
         axios(`http://localhost:5000/api/Setores`, {
@@ -77,6 +96,32 @@ class relatorios extends Component {
             .then(resposta => this.setState({ listaSetores: resposta.data }))
 
             .catch(erro => console.log(erro))
+    }
+
+    tabelaRelatorio = () =>
+    {
+        
+        let arrayy =  this.state.valor.map((dados) => {
+            return (
+                <tr id='tr' className="linhaTabelaRelatorio">
+                    <td id='trTabela'>{dados.titulo}</td>
+                    <td id='trTabela'>{new Intl.DateTimeFormat('pt-BR').format(new Date(dados.dataValor))}</td>
+                    <td id='trTabela'>R$ {dados.valor}</td>
+                </tr>
+            )
+
+        })
+
+        const documento = document.createDocumentFragment()
+        const array = arrayy.forEach(function(item){
+            documento.appendChild(item.cloneNode());
+
+            return documento.childNodes;
+
+          });
+
+        console.log(array)
+
     }
 
     buscarSetor = async () => {
@@ -101,7 +146,6 @@ class relatorios extends Component {
 
             .catch(erro => console.log(erro))
 
-        console.log(this.state.nomeSetor)
     }
 
     componentDidMount() {
@@ -114,10 +158,12 @@ class relatorios extends Component {
         return (
             <section className='body'>
 
+
                 <section className="corpoRelatorio">
+                {/* <button  onClick={this.tabelaRelatorio}>ver</button> */}
 
                     <div>
-                        <select className="selectRelatorio">
+                        <select className="selectRelatorio" >
                             <option>Selecione um setor</option>
                             {
                                 this.state.listaSetores.map((dados) => {
@@ -128,6 +174,8 @@ class relatorios extends Component {
                             }
 
                         </select>
+
+                        {/* <button onClick={this.buscarSetor3}>pesquisar setor</button> */}
 
                         <table className="tabelaRelatorio">
                             <thead >
@@ -202,6 +250,36 @@ class relatorios extends Component {
 
 
                         </table>
+
+                        {/* <table className="tabelaRelatorio">
+                            <thead >
+                                <tr id='tr' className="tituloTabelaRelatorio">
+                                    <th>Relatório</th>
+                                    <th>Data</th>
+                                    <th>Valor</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                {
+                                    this.state.despesas.map((dados) => {
+                                        return (
+                                            <tr id='tr' className="linhaTabelaRelatorio">
+                                                <td id='trTabela'>{dados.nome}</td>
+                                                <td id='trTabela'>{new Intl.DateTimeFormat('pt-BR').format(new Date(dados.dataDespesa))}</td>
+                                                <td id='trTabela'>R$ {dados.valor}</td>
+                                            </tr>
+                                        )
+
+                                    })
+                                }
+
+                            </tbody>
+
+
+                        </table> */}
 
                         <div className='buttonDownRelatorio'>
                             <a role='button' id='botaoBaixar'>Fazer dowload do relatório</a>

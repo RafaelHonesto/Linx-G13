@@ -203,6 +203,13 @@
     margin-left: 20%;
 }
 
+.transicaoTexto {
+    box-shadow: inset 15.5em 0 0 0 #fff;
+    color: #ffffff;
+    transition: all ease-in 0.4s;
+    text-decoration: line-through;
+}
+
 .inputsDespesas button:hover{
     background-color: #723a86;
     transition: all ease-in 0.3s;

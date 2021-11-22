@@ -112,7 +112,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         }
 
         [Authorize]
-        [HttpDelete]
+        [HttpDelete("{idValor}")]
         public IActionResult DeletarValor(int idValor)
         {
             Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));

@@ -23,7 +23,8 @@ class valores extends Component {
             data: new Date(),
             foto: 'default.png',
             listaEmpresa: [],
-            vazio : false
+            vazio : false,
+            idValor: ''
         }
     }
 
@@ -44,20 +45,6 @@ class valores extends Component {
                 modal.classList.remove('mostrar')
             }
         })
-    }
-
-    deuCerto() {
-        Swal.fire({
-            icon: 'success',
-            title: 'Valor excluído',
-            showConfirmButton: false,
-            timer: 1500
-        })
-
-        const modal = document.getElementById('modal')
-        modal.classList.remove('mostrar')
-        const modal2 = document.getElementById('modalSair')
-        modal2.classList.remove('mostrar')
     }
 
     selecionarEntrada = async (event) => {
@@ -175,6 +162,35 @@ class valores extends Component {
         })
     }
 
+    excluirValor = async () => {
+        await axios.delete('http://localhost:5000/api/Valor/'+this.state.idValor, {
+            headers: {
+                'Authorization': 'Bearer ' + localStorage.getItem('token-login')
+            }
+        })
+
+        .then(response => {
+            if(response.status === 200) {
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Valor excluído',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+        
+                const modal = document.getElementById('modal')
+                modal.classList.remove('mostrar')
+                const modal2 = document.getElementById('modalSair')
+                modal2.classList.remove('mostrar')
+            }
+        })
+
+        .catch(erro => console.log(erro))
+
+        
+        this.listarValores();
+    }
+
     componentDidMount() {
         this.listarValores();
 
@@ -187,6 +203,15 @@ class valores extends Component {
 
     funcaoMudaState = (campo) => {
         this.setState({ [campo.target.name]: campo.target.value })
+    }
+
+    buscarId = async (event) => {
+        await this.setState({ idValor: event.idValor })
+        
+        if(this.state.idValor !== ''){
+            this.abreModal()
+        }
+        
     }
 
     render() {
@@ -242,7 +267,7 @@ class valores extends Component {
                                             <td>{dados.titulo} </td>
                                             <td>{dados.idEmpresaNavigation.nomeEmpresa} </td>
                                             <td>R${dados.valor} </td>
-                                            <button hidden={parseJwt().Role === '3' ? true : false}>Editar</button>
+                                            <button onClick={()=> {this.buscarId(dados)} } hidden={parseJwt().Role === '3' ? true : false}>Editar</button>
                                         </tr>
                                     )
                                 })
@@ -308,7 +333,7 @@ class valores extends Component {
                             <h4>Você realmente deseja excluir?</h4>
                             <h3>Essa ação não poderá ser desfeita.</h3>
                             <div className='buttonsSair'>
-                                <button className='botaoSair' onClick={this.deuCerto}>Sim, excluir</button>
+                                <button className='botaoSair' onClick={this.excluirValor}>Sim, excluir</button>
                                 <button id='fechar' className='botaoCancela'>Cancelar</button>
                             </div>
                         </div>
