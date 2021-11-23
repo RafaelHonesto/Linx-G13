@@ -1,4 +1,5 @@
 ﻿using BackEnd_GestaoFinanceira.Model;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -17,6 +18,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _webHostEnvironment = webHostEnvironment;
         }
 
+        [Authorize]
         [HttpPost]
         public string Upload([FromForm] FileUpload objectFile)
         {

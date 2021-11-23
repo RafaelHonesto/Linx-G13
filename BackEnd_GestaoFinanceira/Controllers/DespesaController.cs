@@ -49,7 +49,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// Lista todas as despesas
         /// </summary>
         /// <returns>Uma lista de despesa e um status code 200 - Ok</returns>
-        [Authorize]
+        [Authorize(Roles = "2,3")]
         [HttpGet]
         public IActionResult ListarDespesasDoSetor()
         {
@@ -68,7 +68,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="despesa">Objeto despesa que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
         // Define que somente o setor funcionario pode acessar o método
-        [Authorize]
+        [Authorize(Roles = "2,3")]
         [HttpPost]
         public IActionResult CriarDespesaDoSetor(Despesa despesa)
         {
@@ -96,7 +96,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="despesa">Objeto com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o administrador pode acessar o método
-        [Authorize(Roles = "2, 3")]
+        [Authorize(Roles = "2")]
         [HttpPut]
         public IActionResult EditarDespesaDoSetor(Despesa despesa)
         {
@@ -137,7 +137,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="despesa">Objeto com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o gestor e usuario pode acessar o método
-        [Authorize(Roles = "2, 3")]
+        [Authorize(Roles = "2")]
         [HttpDelete]
         public IActionResult DeletarDespesaDoSetor(int despesa)
         {

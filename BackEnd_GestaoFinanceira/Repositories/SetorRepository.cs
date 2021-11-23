@@ -12,11 +12,13 @@ namespace BackEnd_GestaoFinanceira.Repositories
     public class SetorRepository : ISetorRepository
     {
         private GestaoFinancasContext _ctx = new GestaoFinancasContext();
-        public void Create(Setor setor)
+        public Setor Create(Setor setor)
         {
             _ctx.Setors.Add(setor);
 
             _ctx.SaveChanges();
+
+            return setor;
         }
 
         public void Delete(int id)
