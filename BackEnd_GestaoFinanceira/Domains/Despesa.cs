@@ -14,6 +14,7 @@ namespace BackEnd_GestaoFinanceira.Domains
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public decimal? Valor { get; set; }
+        public bool? Pago { get; set; }
 
         public virtual Setor IdSetorNavigation { get; set; }
         public virtual TipoDespesa IdTipoDespesaNavigation { get; set; }

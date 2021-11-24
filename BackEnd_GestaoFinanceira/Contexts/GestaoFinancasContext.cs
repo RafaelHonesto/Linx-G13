@@ -31,10 +31,7 @@ namespace BackEnd_GestaoFinanceira.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-                //optionsBuilder.UseSqlServer("Data Source=DESKTOP-UIVSK00\\SQLEXPRESS; initial catalog=GESTAOFINANCAS; integrated security = true");
-
-                optionsBuilder.UseSqlServer("Data Source=db-linx.cmwveh4yh3n9.us-east-1.RDS.amazonaws.com; initial catalog=GESTAOFINANCAS; user Id=admin_linx; pwd=Knives132");
+                optionsBuilder.UseSqlServer("Data Source=db-linx.cmwveh4yh3n9.us-east-1.rds.amazonaws.com; initial catalog=GESTAOFINANCAS; user id=admin_linx; pwd=Knives132");
             }
         }
 
@@ -183,6 +180,10 @@ namespace BackEnd_GestaoFinanceira.Contexts
 
                 entity.Property(e => e.Acesso)
                     .HasMaxLength(20)
+                    .IsUnicode(false);
+
+                entity.Property(e => e.Foto)
+                    .HasMaxLength(50)
                     .IsUnicode(false);
 
                 entity.Property(e => e.SenhaDeAcesso)
