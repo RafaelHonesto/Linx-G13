@@ -25,7 +25,7 @@ class relatorios extends Component {
 
         botaoBaixar.addEventListener('click', () => {
 
-            const csv = Array.from(this.state.despesas)
+            const csv = Array.from(linhaTabela)
                 .map(row => Array.from(row.cells)
                     .map(cell => cell.textContent)
                     .join(',')
