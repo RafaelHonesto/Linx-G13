@@ -52,8 +52,6 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _usuarioRepository = new UsuarioRepository();
             _funcionarioRepository = new FuncionarioRepository();
         }
-
-
         /// <summary>
         /// Login 
         /// </summary>

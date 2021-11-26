@@ -31,7 +31,7 @@ namespace BackEnd_GestaoFinanceira.Contexts
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer("Data Source=db-linx.cmwveh4yh3n9.us-east-1.rds.amazonaws.com; initial catalog=GESTAOFINANCAS; user id=admin_linx; pwd=Knives132");
+                optionsBuilder.UseSqlServer("Data Source=db-linx.cmwveh4yh3n9.us-east-1.rds.amazonaws.com; initial catalog=GESTAOFINANCAS; user Id=admin_linx; pwd=Knives132");
             }
         }
 
@@ -187,7 +187,7 @@ namespace BackEnd_GestaoFinanceira.Contexts
                     .IsUnicode(false);
 
                 entity.Property(e => e.SenhaDeAcesso)
-                    .HasMaxLength(50)
+                    .HasMaxLength(255)
                     .IsUnicode(false);
 
                 entity.HasOne(d => d.IdTipoUsuarioNavigation)

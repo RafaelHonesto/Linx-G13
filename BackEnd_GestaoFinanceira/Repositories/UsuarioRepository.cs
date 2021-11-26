@@ -82,12 +82,24 @@ namespace BackEnd_GestaoFinanceira.Repositories
 
         public Usuario VerificarEmailESenha(Usuario usuario)
         {
-            return _ctx.Usuarios.Include(x => x.Funcionario).FirstOrDefault(x => x.Acesso == usuario.Acesso && x.SenhaDeAcesso == Criptografar(usuario.SenhaDeAcesso));
+            Usuario usuarioBuscado = _ctx.Usuarios.Include(x => x.Funcionario).FirstOrDefault(x => x.Acesso == usuario.Acesso);
+
+            if (VerificarHash(usuarioBuscado.SenhaDeAcesso, usuario.SenhaDeAcesso))
+            {
+                return usuarioBuscado;
+            }
+
+            return null;
         }
 
         private string Criptografar(string senha)
         {
             return BCrypt.Net.BCrypt.HashPassword(senha);
+        }
+
+        private bool VerificarHash(string hash, string senha)
+        {
+            return BCrypt.Net.BCrypt.Verify(senha, hash);
         }
     }
 }
