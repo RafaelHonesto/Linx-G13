@@ -35,6 +35,11 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// </summary>
         private ISetorRepository _setorRepository { get; set; }
         private IFuncionarioRepository _funcionarioRepository { get; set; }
+        private ITipoDespesaRepository _tipoDespesaRepository { get; set; }
+        private IDespesaRepository _despesaRepository { get; set; }
+        private IEmpresaRepository _empresaRepository { get; set; }
+        private IValoreRepository _valoreRepository { get; set; }
+        private IUsuarioRepository _usuarioRepository { get; set; }
 
         /// <summary>
         /// Instancia o objeto _setorRepository para que haja a referência aos métodos no repositório
@@ -43,6 +48,10 @@ namespace BackEnd_GestaoFinanceira.Controllers
         {
             _setorRepository = new SetorRepository();
             _funcionarioRepository = new FuncionarioRepository();
+            _tipoDespesaRepository = new TipoDespesaRepository();
+            _despesaRepository = new DespesaRepository();
+            _empresaRepository = new EmpresaRepository();
+            _valoreRepository = new ValoreRepository();
         }
 
 
@@ -50,7 +59,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// Lista todos os setores
         /// </summary>
         /// <returns>Uma lista de setores e um status code 200 - Ok</returns>
-        [Authorize]
+        [Authorize(Roles = "1")]
         [HttpGet]
         public IActionResult ListarSetores()
         {
@@ -82,6 +91,29 @@ namespace BackEnd_GestaoFinanceira.Controllers
         {
             _setorRepository.Create(setor);
 
+            TipoDespesa tipoDespesa = new TipoDespesa() {
+                Titulo = "Energia",
+                IdSetor = setor.IdSetor
+            };
+
+            _tipoDespesaRepository.Create(tipoDespesa);
+
+            TipoDespesa tipoDespesa2 = new TipoDespesa()
+            {
+                Titulo = "Agua",
+                IdSetor = setor.IdSetor
+            };
+
+            _tipoDespesaRepository.Create(tipoDespesa2);
+
+            TipoDespesa tipoDespesa3 = new TipoDespesa()
+            {
+                Titulo = "Funcionarios",
+                IdSetor = setor.IdSetor
+            };
+
+            _tipoDespesaRepository.Create(tipoDespesa3);
+
             return StatusCode(201, "Setor criado");
         }
 
@@ -89,11 +121,10 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <summary>
         /// Atualiza um setor existente
         /// </summary>
-        /// <param name="id">ID do setor que será atualizado</param>
         /// <param name="setor">Objeto com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o administrador pode acessar o método
-        [Authorize]
+        [Authorize(Roles = "1")]
         [HttpPut]
         public IActionResult EditarSetor(Setor setor)
         {
@@ -116,7 +147,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="idSetor">ID do setor que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o administrador pode acessar o método
-        [Authorize]
+        [Authorize(Roles = "1")]
         [HttpDelete]
         public IActionResult DeletarSetor(int idSetor)
         {
@@ -125,11 +156,48 @@ namespace BackEnd_GestaoFinanceira.Controllers
                 return StatusCode(404, "Setor nao encontrado");
             }
 
+            List<Despesa> Despesas = _despesaRepository.Read(idSetor);
+
+            foreach (Despesa despesa in Despesas)
+            {
+                _despesaRepository.Delete(despesa.IdDespesa);
+            }
+
+            List<TipoDespesa> TiposDespesa = _tipoDespesaRepository.ReadBySetorId(idSetor);
+
+            foreach (TipoDespesa tipoDespesa in TiposDespesa)
+            {
+                _tipoDespesaRepository.Delete(tipoDespesa.IdTipoDespesa);
+            }
+
+            List<Valore> Valores = _valoreRepository.ReadBySetorId(idSetor);
+
+            foreach (Valore valore in Valores)
+            {
+                _valoreRepository.Delete(valore.IdValor);
+            }
+
+            List<Empresa> Empresas = _empresaRepository.ReadBySetorId(idSetor);
+
+            foreach (Empresa empresa in Empresas)
+            {
+                _empresaRepository.Delete(empresa.IdEmpresa);
+            }
+
+            List<Funcionario> Funcionarios = _funcionarioRepository.ReadBySetorId(idSetor);
+
+            foreach (Funcionario funcionario in Funcionarios)
+            {
+                _funcionarioRepository.Delete(funcionario.IdFuncionario);
+                _usuarioRepository.Delete(funcionario.IdUsuarioNavigation.IdUsuario);
+            }
+
             _setorRepository.Delete(idSetor);
 
             return StatusCode(200, "Setor deletado");
         }
 
+        [Authorize(Roles = "2,3")]
         [HttpGet("IdSetor")]
         public IActionResult BuscarSetor()
         {

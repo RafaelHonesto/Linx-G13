@@ -44,7 +44,9 @@ CREATE TABLE Despesa (
 	IdSetor				INT FOREIGN KEY REFERENCES Setor (IdSetor),
 	DataDespesa			DATE,
 	Nome				VARCHAR (80),
-	Descricao			VARCHAR (200)
+	Descricao			VARCHAR (200),
+	Valor				NUMERIC (10, 2),
+	Pago				BIT
 );
 
 ALTER TABLE Despesa
@@ -61,11 +63,12 @@ CREATE TABLE Valores (
 	IdValor				INT PRIMARY KEY IDENTITY,
 	IdSetor				INT FOREIGN KEY REFERENCES Setor (IdSetor),
 	Titulo				VARCHAR(20),
-	Valor				VARCHAR (20),
+	Valor				NUMERIC (10, 2),
 	DataValor			DATE,
 	Foto				VARCHAR(150) DEFAULT ('default.png'),
 	IdEmpresa			INT FOREIGN KEY	REFERENCES Empresa (IdEmpresa),
-	Descricao			VARCHAR (200)
+	Descricao			VARCHAR (200),
+	Pago				BIT
 )
 
 

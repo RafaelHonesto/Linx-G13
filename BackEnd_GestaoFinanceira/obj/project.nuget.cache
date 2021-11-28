@@ -1,9 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "EllLWAOK7IProzw/1INEszHaqb47pvCLm2JVGPvONOl6BwDjzAjwpcnFywYogzlqXsPdac3bv1nLbvTiWMg1Cw==",
+  "dgSpecHash": "SX+uOwCF1SLaJhvNMl+cYR/5ZE4tQ4jLXfl/8iwaXa1VboqzjE2X4d1XturOrY+cbIHCAFNDKiHiusTXt8iqQw==",
   "success": true,
   "projectFilePath": "C:\\Users\\gabri\\Desktop\\Linx-G13\\BackEnd_GestaoFinanceira\\BackEnd_GestaoFinanceira.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\gabri\\.nuget\\packages\\bcrypt.net-core\\1.6.0\\bcrypt.net-core.1.6.0.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\5.0.11\\microsoft.aspnetcore.authentication.jwtbearer.5.0.11.nupkg.sha512",
     "C:\\Users\\gabri\\.nuget\\packages\\microsoft.aspnetcore.jsonpatch\\5.0.11\\microsoft.aspnetcore.jsonpatch.5.0.11.nupkg.sha512",

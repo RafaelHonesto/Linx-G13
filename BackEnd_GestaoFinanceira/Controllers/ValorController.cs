@@ -45,7 +45,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// Lista todos os valores
         /// </summary>
         /// <returns>Uma lista de eventos e um status code 200 - Ok</returns>
-        [Authorize]
+        [Authorize(Roles = "2,3")]
         [HttpGet]
         public IActionResult ListarValores()
         {
@@ -63,7 +63,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="valor">Objeto valor que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
         // Define que somente o administrador pode acessar o método
-        //[Authorize(Roles = "2, 3")]
+        [Authorize(Roles = "2,3")]
         [HttpPost]
         public IActionResult CriarValor(Valore valor)
         {
@@ -88,7 +88,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Valor criado");
         }
 
-        [Authorize]
+        [Authorize(Roles = "2")]
         [HttpPut]
         public IActionResult EditarValor(Valore valor)
         {
@@ -111,7 +111,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "Valor atualizado");
         }
 
-        [Authorize]
+        [Authorize(Roles = "2,3")]
         [HttpDelete("{idValor}")]
         public IActionResult DeletarValor(int idValor)
         {

@@ -84,6 +84,14 @@ namespace BackEnd_GestaoFinanceira.Repositories
             {
                 despesaAntiga.IdTipoDespesa = despesa.IdTipoDespesa;
             }
+            if (despesa.Valor != null)
+            {
+                despesaAntiga.Valor = despesa.Valor;
+            }
+            if (despesa.Pago != null)
+            {
+                despesaAntiga.Pago = despesa.Pago;
+            }
 
             return true;
         }

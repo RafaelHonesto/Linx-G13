@@ -12,7 +12,7 @@ namespace BackEnd_GestaoFinanceira.Interfaces
         /// Cria setor
         /// </summary>
         /// <param name="setor">setor a ser criado</param>
-        public void Create(Setor setor);
+        public Setor Create(Setor setor);
 
         /// <summary>
         /// Lista setores

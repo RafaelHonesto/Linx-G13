@@ -98,7 +98,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="usuarioFuncionario">Objeto usuarioFuncionario que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
         // Define que somente o administrador pode acessar o método
-        [Authorize]
+        [Authorize(Roles = "1")]
         [HttpPost("Criar"), DisableRequestSizeLimit]
         public IActionResult CriarUsuario(UsuarioFuncionario usuarioFuncionario)
         {
@@ -197,7 +197,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// </summary>
         /// <param name="usuarioFuncionario">Objeto usuarioFuncionario que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
-        [Authorize]
+        [Authorize(Roles = "2")]
         [HttpPost("Gestor")]
         public IActionResult CadastrarUsuarioNoSetor(UsuarioFuncionario usuarioFuncionario)
         {
@@ -255,7 +255,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             }
         }
 
-        [Authorize]
+        [Authorize(Roles = "2")]
         [HttpGet("Setor")]
         public IActionResult ListarUsuarioIdSetor()
         {
@@ -272,7 +272,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// </summary>
         /// <param name="idUsuario">ID do usuário que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
-        [Authorize]
+        [Authorize(Roles = "2")]
         [HttpDelete("Gestor")]
         public IActionResult DeletarUsuarioNoSetor(int idUsuario)
         {
@@ -293,6 +293,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "funcionario deletado");
         }
 
+        [Authorize(Roles = "2")]
         [HttpGet("Buscar")]
         public IActionResult BuscarPorId(int idUsuario)
         {
@@ -301,6 +302,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, funcionario);
         }
 
+       
         [HttpGet]
         public IActionResult ListarUsuario ()
         {

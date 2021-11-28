@@ -71,6 +71,14 @@ namespace BackEnd_GestaoFinanceira.Repositories
             {
                 valorAntigo.Valor = valor.Valor;
             }
+            if (valor.Titulo != null)
+            {
+                valorAntigo.Titulo = valor.Titulo;
+            }
+            if (valor.Pago != null)
+            {
+                valorAntigo.Pago = valor.Pago;
+            }
 
             _ctx.Valores.Update(valorAntigo);
 

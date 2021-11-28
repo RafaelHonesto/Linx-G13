@@ -45,7 +45,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// Lista todos os tipos de despesas
         /// </summary>
         /// <returns>Uma lista de despesa e um status code 200 - Ok</returns>
-        [Authorize(Roles = "2, 3")]
+        [Authorize(Roles = "2,3")]
         [HttpGet]
         public IActionResult ListarTiposDespesa()
         {
@@ -63,7 +63,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="tipoDespesa">Objeto novoEvento que será cadastrado</param>
         /// <returns>Um status code 201 - Created</returns>
         // Define que somente o administrador e gestor pode acessar o método
-        [Authorize]
+        [Authorize(Roles = "2,3")]
         [HttpPost]
         public IActionResult CriarTipoDespesa(TipoDespesa tipoDespesa)
         {
@@ -84,7 +84,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="tipoDespesa">Objeto com as novas informações</param>
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o administrador e gestor pode acessar o método
-        [Authorize(Roles = "2, 3")]
+        [Authorize(Roles = "2")]
         [HttpPut]
         public IActionResult EditarTipoDespesa(TipoDespesa tipoDespesa)
         {
@@ -114,7 +114,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="idTipoDespesa">ID da despesa que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o administrador e gestor pode acessar o método
-        [Authorize(Roles = "2, 3")]
+        [Authorize(Roles = "2")]
         [HttpDelete]
         public IActionResult DeletarTipoDespesa(int idTipoDespesa)
         {

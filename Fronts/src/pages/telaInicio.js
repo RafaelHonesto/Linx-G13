@@ -147,6 +147,7 @@ class telaInicio extends Component {
     render() {
         return (
             <section className='body'>
+
                 <section className='corpoInicial'>
                     <div className='esquerdo'>
                         <div className='titulo-inicio'>

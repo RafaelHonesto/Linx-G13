@@ -16,6 +16,8 @@ namespace BackEnd_GestaoFinanceira.Domains
         public string Foto { get; set; }
         public int? IdEmpresa { get; set; }
         public string Descricao { get; set; }
+        public bool? Perda { get; set; }
+        public bool? Pago { get; set; }
 
         public virtual Empresa IdEmpresaNavigation { get; set; }
         public virtual Setor IdSetorNavigation { get; set; }
