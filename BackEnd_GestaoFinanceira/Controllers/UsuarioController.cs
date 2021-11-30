@@ -166,7 +166,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="idUsuario">ID do usuário que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
         [Authorize(Roles = "1")]
-        [HttpDelete]
+        [HttpDelete("{idUsuario}")]
         public IActionResult DeletarUsuario(int idUsuario)
         {
             try
