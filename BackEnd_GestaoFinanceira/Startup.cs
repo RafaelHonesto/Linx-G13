@@ -124,9 +124,14 @@ namespace BackEnd_GestaoFinanceira
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseRouting();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+            Path.Combine(env.ContentRootPath, "MyStaticFiles")),
+                RequestPath = "/StaticFiles"
+            });
 
-            app.UseStaticFiles();
+            app.UseRouting();
 
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
