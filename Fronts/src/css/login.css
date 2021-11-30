@@ -80,3 +80,9 @@
     bottom: 0;
     justify-content: space-between;
 }
+
+.libras {
+    position: fixed;
+    top: 0;
+    z-index: 999999999999;
+}

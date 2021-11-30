@@ -25,8 +25,7 @@ class telaAdm extends Component {
             cpf: '',
             setores: [],
             listaSetores: [],
-            idSetor: "",
-            numeroFuncionarios: ''
+            idSetor: ""
 
         }
 
@@ -170,7 +169,7 @@ class telaAdm extends Component {
 
             .then(dados => {
                 if (dados.status === 200) {
-                    this.setState({ setores: dados.data.length, listaSetores: dados.data, numeroFuncionarios: dados.data.funcionario })
+                    this.setState({ setores: dados.data.length, listaSetores: dados.data})
 
                     console.log(dados)
                 }
@@ -195,6 +194,30 @@ class telaAdm extends Component {
 
     funcaoMudaState = (campo) => {
         this.setState({ [campo.target.name]: campo.target.value })
+    }
+
+    somarTudo = (dados) => {
+        let soma = 0
+
+        dados.map((dado) => {
+            if(dado.tipoEntrada){
+                soma+= parseInt(dado.valor)
+            } 
+        })
+
+        return soma
+    }
+    
+    subtrairTudo = (dados) => {
+        let saida = 0
+
+        dados.map((dado) => {
+            if(dado.tipoEntrada == false){
+                saida+= parseInt(dado.valor)
+            } 
+        })
+
+        return saida
     }
 
 
@@ -223,27 +246,28 @@ class telaAdm extends Component {
                             Setores
                         </h1>
 
-                        <div className="titulo-tabela-adm">
+                        <thead className="titulo-tabela-adm">
                             <th>Nº de funcionários</th>
+                            <th>Gestão</th>
                             <th>Entradas</th>
                             <th>Saídas</th>
-                            <th>Gestão</th>
-                        </div>
+                        </thead>
+                        <tbody>
                         {
                             this.state.listaSetores.map((dados) => {
                                 return (
                                     <tr className='linhaTabelaAdm'>
                                         <td>{dados.nome}</td>
-                                        <td>{this.state.numeroFuncionarios}</td>
-                                        <td>1</td>
-                                        <td>2</td>
+                                        <td>{dados.funcionarios.length}</td>
                                         <td>Gabriel</td>
+                                        <td>R$ {this.somarTudo(dados.valores)}</td>
+                                        <td>R$ {this.subtrairTudo(dados.valores)}</td>
                                         <button onClick={this.abreModal}>Editar</button>
                                     </tr>
                                 )
                             })
                         }
-
+                        </tbody>
                     </table>
 
                     <p onClick={this.abreModal2} className="cadastrarAdm">Cadastrar novos setores +</p>

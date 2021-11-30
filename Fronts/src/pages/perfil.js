@@ -148,7 +148,7 @@ class perfil extends Component {
                 <section className="corpoPerfil">
                     <div className="contentFotoPerfil">
                         <div className="FotoPerfil">
-                            <img src={'http://localhost:5000/wwwroot/uploads/'+this.state.foto} alt="foto do perfil" className="fotoPerfil" />
+                            <img src={fotoPerfil} alt="foto do perfil" className="fotoPerfil" />
                         </div>
                     </div>
                     <div className="contentNomePerfil">

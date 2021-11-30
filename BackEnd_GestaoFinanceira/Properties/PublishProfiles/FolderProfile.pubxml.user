@@ -5,6 +5,10 @@ https://go.microsoft.com/fwlink/?LinkID=208121.
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <_PublishTargetUrl>C:\Users\50350368805\Desktop\Linx-G13\Publish</_PublishTargetUrl>
+<<<<<<< HEAD
     <History>True|2021-11-30T17:33:15.1298469Z;True|2021-11-24T17:17:46.8866129-02:00;True|2021-11-24T17:16:52.1273222-02:00;True|2021-11-24T16:11:01.1528578-02:00;</History>
+=======
+    <History>False|2021-11-28T00:56:19.7685216Z;False|2021-11-27T21:56:00.0119184-03:00;False|2021-11-25T14:53:14.6474018-03:00;True|2021-11-24T16:17:46.8866129-03:00;True|2021-11-24T16:16:52.1273222-03:00;True|2021-11-24T15:11:01.1528578-03:00;</History>
+>>>>>>> 4adfaa331c1b86c9b085bd26050ca7cba72427c2
   </PropertyGroup>
 </Project>

@@ -300,7 +300,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, funcionario);
         }
 
-        [Authorize(Roles = "3")]
+       
         [HttpGet]
         public IActionResult ListarUsuario ()
         {

@@ -94,7 +94,10 @@ namespace BackEnd_GestaoFinanceira.Repositories
             }
 
             _ctx.Despesas.Update(despesaAntiga);
+<<<<<<< HEAD
 
+=======
+>>>>>>> 4adfaa331c1b86c9b085bd26050ca7cba72427c2
             _ctx.SaveChanges();
 
             return true;

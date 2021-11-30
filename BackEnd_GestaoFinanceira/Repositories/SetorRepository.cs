@@ -33,6 +33,7 @@ namespace BackEnd_GestaoFinanceira.Repositories
         public List<Setor> Read()
         {
             return _ctx.Setors
+                .Include(x => x.Despesas).Include(x => x.Valores).Include(x => x.TipoDespesas).Include(x => x.Empresas).Include(f => f.Funcionarios)
                 .ToList();
         }
 
@@ -43,7 +44,7 @@ namespace BackEnd_GestaoFinanceira.Repositories
 
         public Setor SearchById(int? id)
         {
-            return _ctx.Setors.Include(x => x.Despesas).Include(x => x.Valores).Include(x => x.TipoDespesas).Include(x => x.Empresas).FirstOrDefault(x => x.IdSetor == id);
+            return _ctx.Setors.Include(x => x.Despesas).Include(x => x.Valores).Include(x => x.TipoDespesas).Include(x => x.Empresas).Include(f => f.Funcionarios).FirstOrDefault(x => x.IdSetor == id);
         }
 
         public Setor BuscarNome(string nome)

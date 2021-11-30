@@ -25,7 +25,7 @@
 }
 
 .tabela-adm {
-    width: 58%;
+    width: 55%;
     font-family: 'dosis';
     border-radius: 8px;
     box-shadow: 0 0 1em rgba(0, 0, 0, 0.247);
@@ -45,7 +45,7 @@
 
 .titulo-tabela-adm {
     display: flex;
-    width: 60%;
+    width: 55%;
     height: 100%;
     margin-left: 15%;
     margin-bottom: 20px;
@@ -56,8 +56,12 @@
     margin-left: -45px;
 }
 .titulo-tabela-adm th:nth-child(3){
-    margin-right: 35px;
-    margin-left: -20px;
+    margin-right: 15px;
+    margin-left: -30px;
+}
+.titulo-tabela-adm th:nth-child(4){
+    margin-right: -40px;
+    margin-left: -10px;
 }
 
 .imagemSair {
@@ -214,8 +218,9 @@
     text-align: center;
 }
 .linhaTabelaAdm td:nth-child(4) {
-    width: 30px;
+    width: 120px;
     text-align: center;
+    margin-right: -45px;
 }
 .linhaTabelaAdm td:nth-child(5) {
     width: 120px;
