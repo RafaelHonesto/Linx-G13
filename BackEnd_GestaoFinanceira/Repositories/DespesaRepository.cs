@@ -93,6 +93,9 @@ namespace BackEnd_GestaoFinanceira.Repositories
                 despesaAntiga.Pago = despesa.Pago;
             }
 
+            _ctx.Despesas.Update(despesaAntiga);
+            _ctx.SaveChanges();
+
             return true;
         }
     }

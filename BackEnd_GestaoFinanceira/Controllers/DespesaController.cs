@@ -138,14 +138,15 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <returns>Um status code 204 - No Content</returns>
         // Define que somente o gestor e usuario pode acessar o método
         [Authorize(Roles = "2")]
-        [HttpDelete]
+        [HttpDelete("{despesa}")]
         public IActionResult DeletarDespesaDoSetor(int despesa)
         {
+
             Despesa despesaBuscada = _despesaRepository.SearchById(despesa);
 
             if (despesaBuscada == null)
             {
-                return StatusCode(400, "O setor nao existe");
+                return StatusCode(400, "A despesa nao existe");
             }
 
             Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
