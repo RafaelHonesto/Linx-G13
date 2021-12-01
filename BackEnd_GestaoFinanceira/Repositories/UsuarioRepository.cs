@@ -18,7 +18,7 @@ namespace BackEnd_GestaoFinanceira.Repositories
         /// <param name="usuario">usuario a ser criado</param>
         public Usuario Create(Usuario usuario)
         {
-            usuario.SenhaDeAcesso = usuario.SenhaDeAcesso;
+            usuario.SenhaDeAcesso = Criptografar(usuario.SenhaDeAcesso);
 
             _ctx.Usuarios.Add(usuario);
 
@@ -72,7 +72,7 @@ namespace BackEnd_GestaoFinanceira.Repositories
             }
             if (usuario.SenhaDeAcesso != null)
             {
-                usuarioAntigo.SenhaDeAcesso = usuario.SenhaDeAcesso;
+                usuarioAntigo.SenhaDeAcesso = Criptografar(usuario.SenhaDeAcesso);
             }
 
             _ctx.Usuarios.Update(usuarioAntigo);
