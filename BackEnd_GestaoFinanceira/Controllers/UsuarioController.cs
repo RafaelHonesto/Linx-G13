@@ -253,7 +253,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
             }
         }
 
-        [Authorize(Roles = "2")]
+        [Authorize]
         [HttpGet("Setor")]
         public IActionResult ListarUsuarioIdSetor()
         {
@@ -271,7 +271,7 @@ namespace BackEnd_GestaoFinanceira.Controllers
         /// <param name="idUsuario">ID do usuário que será deletado</param>
         /// <returns>Um status code 204 - No Content</returns>
         [Authorize(Roles = "2")]
-        [HttpDelete("Gestor")]
+        [HttpDelete("Gestor/{idUsuario}")]
         public IActionResult DeletarUsuarioNoSetor(int idUsuario)
         {
             if (_usuarioRepository.FindByUserId(idUsuario) == null)
@@ -291,16 +291,16 @@ namespace BackEnd_GestaoFinanceira.Controllers
             return StatusCode(200, "funcionario deletado");
         }
 
-        [Authorize(Roles = "2")]
+        [Authorize]
         [HttpGet("Buscar")]
-        public IActionResult BuscarPorId(int idUsuario)
+        public IActionResult BuscarPorId()
         {
             Funcionario funcionario = _funcionarioRepository.FindByUserId(Int32.Parse(HttpContext.User.Claims.FirstOrDefault(x => x.Type == JwtRegisteredClaimNames.Jti).Value));
 
             return StatusCode(200, funcionario);
         }
 
-       
+        [Authorize]
         [HttpGet]
         public IActionResult ListarUsuario ()
         {
