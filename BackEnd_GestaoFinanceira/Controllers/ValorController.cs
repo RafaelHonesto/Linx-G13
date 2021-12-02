@@ -33,11 +33,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
         private IValoreRepository _valoreRepository { get; set; }
         private IFuncionarioRepository _funcionarioRepository { get; set; }
         private IEmpresaRepository _empresaRepository { get; set; }
+        private IComputerVisionRepository _computerVisionRepository { get; set; }
         public ValorController()
         {
             _valoreRepository = new ValoreRepository();
             _funcionarioRepository = new FuncionarioRepository();
             _empresaRepository = new EmpresaRepository();
+            _computerVisionRepository = new ComputerVisionRepository();
         }
 
 
@@ -132,6 +134,13 @@ namespace BackEnd_GestaoFinanceira.Controllers
             _valoreRepository.Delete(idValor);
 
             return StatusCode(200, "Valor deletado");
+        }
+
+        [Authorize(Roles = "1")]
+        [HttpPost("nota")]
+        public IActionResult LerNota(string url)
+        {
+            return StatusCode(200, _computerVisionRepository.ReadFile(url));
         }
     }
 }

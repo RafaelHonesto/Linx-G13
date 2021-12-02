@@ -136,3 +136,6 @@ C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\
 C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\scopedcss\bundle\BackEnd_GestaoFinanceira.styles.css
 C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.RazorTargetAssemblyInfo.cache
 C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Debug\net5.0\BackEnd_GestaoFinanceira.genruntimeconfig.cache
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Debug\net5.0\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Debug\net5.0\Microsoft.Rest.ClientRuntime.dll
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Debug\net5.0\Microsoft.Rest.ClientRuntime.Azure.dll
