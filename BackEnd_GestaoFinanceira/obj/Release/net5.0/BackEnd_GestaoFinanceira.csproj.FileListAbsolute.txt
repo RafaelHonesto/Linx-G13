@@ -206,3 +206,6 @@ C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\ref\B
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\BackEnd_GestaoFinanceira.xml
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\BackEnd_GestaoFinanceira.pdb
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\BackEnd_GestaoFinanceira.genruntimeconfig.cache
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Release\net5.0\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Release\net5.0\Microsoft.Rest.ClientRuntime.dll
+C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Release\net5.0\Microsoft.Rest.ClientRuntime.Azure.dll
