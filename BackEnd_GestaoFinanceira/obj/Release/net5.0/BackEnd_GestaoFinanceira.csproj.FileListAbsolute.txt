@@ -209,3 +209,6 @@ C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\BackE
 C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Release\net5.0\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
 C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Release\net5.0\Microsoft.Rest.ClientRuntime.dll
 C:\Users\50350368805\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Release\net5.0\Microsoft.Rest.ClientRuntime.Azure.dll
+C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Release\net5.0\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
+C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Release\net5.0\Microsoft.Rest.ClientRuntime.dll
+C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\bin\Release\net5.0\Microsoft.Rest.ClientRuntime.Azure.dll

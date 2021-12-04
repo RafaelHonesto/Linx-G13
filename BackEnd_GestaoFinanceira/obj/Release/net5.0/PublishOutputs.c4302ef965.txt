@@ -11,6 +11,7 @@ C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTm
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.JsonPatch.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
+C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.Azure.CognitiveServices.Vision.ComputerVision.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.Data.SqlClient.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.EntityFrameworkCore.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.EntityFrameworkCore.Abstractions.dll
@@ -26,6 +27,8 @@ C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTm
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.IdentityModel.Tokens.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.OpenApi.dll
+C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.Rest.ClientRuntime.dll
+C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Microsoft.Rest.ClientRuntime.Azure.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Newtonsoft.Json.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Newtonsoft.Json.Bson.dll
 C:\Users\User\Desktop\Linx-G13\BackEnd_GestaoFinanceira\obj\Release\net5.0\PubTmp\Out\Swashbuckle.AspNetCore.Swagger.dll
